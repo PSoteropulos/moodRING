@@ -19,7 +19,7 @@ app.use(cors({
 
 // VERY IMPORTANT!!! ROUTES*MUST GO AFTER MIDDLEWARE!!!!
 require('./routes/mood.routes')(app);
-// require('./routes/user.routes')(app)
+require('./routes/user.routes')(app)
 
 app.listen(PORT, ( ) => {
     console.log(`Server is up on port ${PORT}`)

@@ -3,7 +3,7 @@ const Mood = require('../models/mood.model')
 module.exports = {
 
     getAllMoods: (req,res)=>{
-        Mood.find().sort({created_at:1})
+        Mood.find().sort({createdAt:-1})
         .then((result)=>{
             res.json(result)
         }).catch((err)=>{

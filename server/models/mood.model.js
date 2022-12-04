@@ -13,7 +13,7 @@ const MoodSchema = new mongoose.Schema({
         type: String,
         required:[true, "Mood description is required."],
         minLength:[3, "Mood description must be longer than 2 characters."],
-        maxLength:[20, "Mood description can not exceed 20 characters."]
+        maxLength:[30, "Mood description can not exceed 30 characters."]
     },
 
     hueRotateValue: {

@@ -1,7 +1,12 @@
 .animatedGradient {
-    height: 100vh;
+    /* height: 100vh; */
+    margin: 0;
+    padding: 0;
     width: 100%;
-    overflow-y: hidden;
+    min-height: 100vh;
+    /* height:auto ; */
+    /* -ms-overflow-style: none; */
+    /* scrollbar-width: none; */
     animation: animateBg 20s linear infinite;
     background-image: linear-gradient(120deg, 
     hsl(240, 50%, 10%),
@@ -43,6 +48,9 @@
     );
     background-size: 2000% 1000%;
     /* background-size: 100% 100%; */
+}
+::-webkit-scrollbar{
+    display: none;
 }
 @keyframes animateBg {
     0% { background-position: 0% 0%; }

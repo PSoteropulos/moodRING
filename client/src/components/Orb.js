@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 // import crystalBall from '../assets/anotherball.png' //no-has background
 // import crystalBall from '../assets/awesome-orb.png' //top contender
 // import crystalBall from '../assets/glass_ball.png'
+// import crystalBall from '../assets/magic orb edit2.png'
 // import crystalBall from '../assets/moreglass.png' //not bad
 // import crystalBall from '../assets/orb_highlight.png'
 // import crystalBall from '../assets/orb_shadow.png'
