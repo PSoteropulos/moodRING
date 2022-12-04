@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import {useNavigate, Link} from 'react-router-dom'
+import styles from './Background.module.css'
 
 const Register = (props) => {
 
@@ -28,30 +29,30 @@ const Register = (props) => {
             // console.log("Session data:", Session.items())
             navigate('/dashboard')
         }).catch((error)=>{
-            console.log(error)
+            console.log('register error, clientside',error)
             setErrors(error.response.data.errors)
         })
     }
 
     return (
-        <div className='g-0 bg-secondary p-3' >
-            <h1>Register for moodRING</h1>
-            <Link to={'/login'}>Already registered? Click here to log in</Link>
-                <form className='col-4 mx-auto' onSubmit={submitHandle}>
-                    <label className='form-label'>Username:</label>
+        <div className={styles.animatedGradient}>
+            <h1 className='p-4 text-white'>Register for moodRING</h1>
+                <form className='col-4 mx-auto p-5' onSubmit={submitHandle}>
+                    <label className='form-label text-white h5 pt-2'>Username:</label>
                     <input type="text" name="username" onChange={(e)=>handleChange(e)} value={formData.username} className='form-control'/>
-                    {errors.username && <span className='text-warning'>{errors.username.message}</span>}<br/>
-                    <label className='form-label'>Email:</label>
+                    {errors.username && <span className='text-danger h6'>{errors.username.message}</span>}<br/>
+                    <label className='form-label text-white h5 pt-2'>Email:</label>
                     <input type="text" name="email" onChange={(e)=>handleChange(e)} value={formData.email} className='form-control'/>
-                    {errors.email && <span className='text-warning'>{errors.email.message}</span>}<br/>
-                    <label className='form-label'>Password:</label>
+                    {errors.email && <span className='text-danger h6'>{errors.email.message}</span>}<br/>
+                    <label className='form-label text-white h5 pt-2'>Password:</label>
                     <input type='password' name="password" onChange={(e)=>handleChange(e)} value={formData.password} className='form-control'/>
-                    {errors.password && <span className='text-warning'>{errors.password.message}</span>}<br/>
-                    <label className='form-label'>Confirm Password:</label>
+                    {errors.password && <span className='text-danger h6'>{errors.password.message}</span>}<br/>
+                    <label className='form-label text-white h5 pt-2'>Confirm Password:</label>
                     <input type="password" name="confirmPassword" onChange={(e)=>handleChange(e)} value={formData.confirmPassword} className='form-control'/>
-                    {errors.confirmPassword && <span className='text-warning'>{errors.confirmPassword.message}</span>}<br/>
+                    {errors.confirmPassword && <span className='text-danger h6'>{errors.confirmPassword.message}</span>}<br/>
                     <button className='btn btn-info mt-3' type='submit'>Register</button>
                 </form>
+                <Link style={{textDecoration:'none', fontSize:22}} to={'/login'}>Already registered? Click here to log in</Link>
         </div>
     )
 }

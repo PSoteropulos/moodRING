@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import {useNavigate, Link} from 'react-router-dom'
+import styles from './Background.module.css'
 
 const Login = (props) => {
     
     const navigate = useNavigate()
     
     const [formData, setFormData] = useState({email:"", password:""})
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState("")
 
     const handleChange= (e) => {
         let key=e.target.name;
@@ -28,23 +29,24 @@ const Login = (props) => {
             // console.log("Session data:", Session.items())
             navigate('/dashboard')
         }).catch((error)=>{
-            console.log(error)
+            console.log('login error, clientside',error)
+            setErrors(error.response.data.error)
         })
     }
 
     return (
-        <div className='g-0 bg-secondary p-3'>
-            <h1>Login to moodRING</h1>
-            <Link to={'/register'}>Not yet registered? Register here</Link>
-                <form className='col-4 mx-auto' onSubmit={submitHandle}>
-                    <label className='form-label'>Email:</label>
+        <div className={styles.animatedGradient}>
+            <h1 className='p-4 text-white'>Login to moodRING</h1>
+                {errors && <span className='text-danger h4'>{errors}</span>}<br/>
+                <form className='col-4 mx-auto p-4' onSubmit={submitHandle}>
+                    <label className='form-label text-white h5 pt-3'>Email:</label>
                     <input type="text" name="email" onChange={(e)=>handleChange(e)} value={formData.email} className='form-control'/>
-                    {errors.email && <span className='text-warning'>{errors.email.message}</span>}<br/>
-                    <label className='form-label'>Password:</label>
+                    <label className='form-label text-white h5 pt-3'>Password:</label>
                     <input type='password' name="password" onChange={(e)=>handleChange(e)} value={formData.password} className='form-control'/>
-                    {errors.password && <span className='text-warning'>{errors.password.message}</span>}<br/>
-                    <button className='btn btn-info mt-3' type='submit'>Login</button>
+                    {/* {errors && <span className='text-warning'>{errors}</span>}<br/> */}
+                    <button className='btn btn-info m-5' type='submit'>Login</button>
                 </form>
+            <Link style={{textDecoration:'none', fontSize:22}} to={'/register'}>Not yet registered? Register here</Link>
         </div>
     )
 }

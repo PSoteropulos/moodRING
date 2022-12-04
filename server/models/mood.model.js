@@ -37,6 +37,11 @@ const MoodSchema = new mongoose.Schema({
         max:500
     },
 
+    postedBy:{
+        type: String,
+        required:[true, "Must be logged in to post."]
+    }
+
 }, {timestamps:true });
 
 module.exports = mongoose.model('Mood', MoodSchema)

@@ -4,10 +4,11 @@
     padding: 0;
     width: 100%;
     min-height: 100vh;
+    overflow-x:hidden;
     /* height:auto ; */
     /* -ms-overflow-style: none; */
     /* scrollbar-width: none; */
-    animation: animateBg 20s linear infinite;
+    animation: animateBg 30s linear infinite;
     background-image: linear-gradient(120deg, 
     hsl(240, 50%, 10%),
     hsl(270, 50%, 10%),
@@ -49,9 +50,11 @@
     background-size: 2000% 1000%;
     /* background-size: 100% 100%; */
 }
+
 ::-webkit-scrollbar{
     display: none;
 }
+
 @keyframes animateBg {
     0% { background-position: 0% 0%; }
     100% { background-position: 100% 100%; }

@@ -5,7 +5,7 @@ const SECRET = process.env.SECRET_KEY
 // const {isLoggedUser} = require('../config/jwt.config')
 
 module.exports = {
-    
+
     registerUser: async (req,res) => {
         try{
             // Create a new user
@@ -21,24 +21,31 @@ module.exports = {
     },
 
     loginUser: async (req,res) => {
-        const user = await User.findOne({email:req.body.email})
-        if(!user){
-            res.status(400).json({error:"Invalid email or password."})
-        }
-        try{
-            const isPasswordValid = await bcrypt.compare(req.body.password,user.password)
-            console.log(isPasswordValid)
-            if(!isPasswordValid){
-                res.status(400).json({error:"Invaild email or password."})
-            }else{
-                const userToken = jwt.sign({_id:user._id,email:user.email},SECRET)
-                console.log("User data follows:",user)
-                res.status(201).cookie('userToken', userToken, {httpOnly:true}).json({successMessage:'User logged in', user:user})
-                // res.status(201).cookie('userToken', userToken, {httpOnly:true, expires:new Date(Date.now() + 90000)}).json({successMessage:'User logged in', user:user})
+        if(req.body.email){
+            const user = await User.findOne({email:req.body.email}).exec()
+            console.log(user)
+            try{
+                const isPasswordValid = await bcrypt.compare(req.body.password, user.password)
+                console.log(isPasswordValid)
+                if(!isPasswordValid){
+                    res.status(400).json({error:"Invalid email or password."})
+                }else{
+                    const userToken = jwt.sign({_id:user._id,email:user.email},SECRET)
+                    console.log("User data follows:",user)
+                    res.status(201).cookie('userToken', userToken, {httpOnly:true}).json({successMessage:'User logged in', user:user})
+                    // res.status(201).cookie('userToken', userToken, {httpOnly:true, expires:new Date(Date.now() + 90000)}).json({successMessage:'User logged in', user:user})
+                }
+            }catch(error){
+                console.log(error)
+                res.status(400).json({error:"Invalid email or password."})
             }
-        }catch(error){
+        }else{
             res.status(400).json({error:"Invalid email or password."})
         }
+        // if(!user){
+        //     res.status(400).json({error:"line 26 Invalid email or password."})
+        // }
+        
     },
 
     // getLoggedUser: (req,res) => {
