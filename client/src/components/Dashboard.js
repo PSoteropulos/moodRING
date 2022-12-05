@@ -4,6 +4,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 import Orb from './Orb'
 import styles from './Background.module.css'
 import NavBar from './NavBar'
+import Footer from './Footer'
 import {format} from 'date-fns'
 
 const Dashboard = (props) => {
@@ -52,10 +53,10 @@ const Dashboard = (props) => {
     return (
         <div>
         {/* // <div className={styles.animatedGradient}> */}
-            <NavBar  username={loggedUser.username}/>
-            <p className='text-white h2 m-3'>Moods</p>
+            <NavBar username={loggedUser.username}/>
+            {/* <p className='text-white h2 m-3'>Moods</p> */}
             {/* <div className='d-flex flex-wrap'> */}
-            <div className='col row align-items-center justify-content-center'>
+            <div className='col row align-items-center justify-content-center p-3'>
                 {list.map((mood, index)=>(
                     // <div key={index} className="col-10 row m-3 rounded-4 bg-secondary align-items-center justify-content-center">
                     <div key={index} style={{background: 'rgba(100,100,100,0.1)'}} className="col-9 m-3 rounded-4 align-items-center justify-content-center backdrop-blur-md">
@@ -92,6 +93,7 @@ const Dashboard = (props) => {
                 ))
                 }
             </div>
+            <Footer/>
         </div>
     )
 }

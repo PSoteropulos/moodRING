@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import {useNavigate, Link} from 'react-router-dom'
 import styles from './Background.module.css'
+import Footer from './Footer'
 
 const Login = (props) => {
     
@@ -49,6 +50,7 @@ const Login = (props) => {
                     <button className='btn btn-danger btn-lg m-5' type='submit'>Login</button>
                 </form>
             <Link style={{textDecoration:'none', fontSize:22}} to={'/register'}>Not yet registered? Register here</Link>
+            <Footer/>
         </div>
     )
 }

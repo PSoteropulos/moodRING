@@ -30,12 +30,12 @@ const NavBar = (props) => {
 
 
     return (
-        <div className='col row fluid align-items-center fluid p-3' style={{background: 'rgba(100,100,100, 0.2)',minHeight:"15vh"}}>
-            <div className='col-6 justify-content-start align-items-center'>
+        <div className='col row fluid align-items-center justify-content-evenly fluid p-3' style={{background: 'rgba(100,100,100, 0.15)',minHeight:"15vh"}}>
+            <div className='col-5 justify-content-center align-items-center'>
                 {/* <p className='h4 text-white' style={{fontFamily:'fantasy'}}>Welcome to</p> */}
-                <p className="text-white h1" style={{fontFamily:'fantasy'}}>moodRING</p>
+                <p className="text-white" style={{fontFamily:'fantasy', fontSize:58}}>moodRING</p>
             </div>
-            <div className='col-6 h4 justify-content-center align-items-center'>
+            <div className='col-5 flex h4 justify-content-end align-items-center'>
                 <div className='text-white h3' style={{fontFamily:'fantasy'}}>
                     {username}
                 </div>

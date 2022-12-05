@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import Orb from './Orb'
 import styles from './Background.module.css'
 import NavBar from './NavBar'
+import Footer from './Footer'
 import uriTip from '../assets/uri_img.png'
 
 const MoodForm = (props) => {
@@ -61,8 +62,8 @@ const MoodForm = (props) => {
     return (
         <div>
             <NavBar username={loggedUser.username}/>
-            <p className='m-3 h2 text-white'>Log a Mood</p>
-            <div className='col-12 row justify-content-center align-items-center p-3'>
+            {/* <p className='m-3 h2 text-white'>Log a Mood</p> */}
+            <div className='col-12 row justify-content-center align-items-center p-4'>
                 <form style={{background: 'rgba(100,100,100,0.2)'}} className="col-10 p-3 rounded-4" onSubmit={handleSubmit}>
                     {displayTooltip&& <div onClick={()=>setDisplayTooltip(false)} style={{position:'fixed', top:'5vh', width: '75%', height:'90vh', zIndex:1, background: 'rgba(0,0,0,0.95)'}} className='text-white justify-content-center rounded-4 h5 m-3 p-4'>
                         <p className='p-1'>In your Spotify desktop or browser app, right-click on the track you wish to share.</p>
@@ -79,16 +80,15 @@ const MoodForm = (props) => {
                                 {errors.trackURI && <span className='text-danger h5 m-2'>{errors.trackURI.message}</span>}<br/>
                         </div>
                         <div style={{minHeight:'20vh'}}className='col-4 row m-3 mb-3 align-items-evenly'>
-                            <label className='form-label text-white h4 p-2'>Mood Description:</label>
+                            <label className='form-label text-white h4 p-2'>How does this track make you feel?</label>
                             <p className='opacity-0 h6 col-6 pb-2' >What is this? Click here for instructions to get the URI.</p>
                             <input type="text" name="moodDescription"className='form-control m-1' onChange={(e)=>handleChange(e)} value={formData.moodDescription}/>
                             {errors.moodDescription && <span className='text-danger h5 m-2'>{errors.moodDescription.message}</span>}<br/>
-                        
                         </div>
 
-                        <div className='col-6 d-flex mt-1'>
+                        <div className='col-6 d-flex mt-4'>
                             <div className='col-12 justify-content-center'>
-                                <label className='form-label text-white h4 '>Mood Color:</label>
+                                <label className='form-label text-white h4'>What color do you associate with this emotion or track?</label>
                                 {errors.hueRotateValue && <span className='text-danger h4'>{errors.hueRotateValue.message}</span>}<br/>
                                 {errors.brightnessValue && <span className='text-danger h4'>{errors.brightnessValue.message}</span>}<br/>
                                 {errors.saturateValue && <span className='text-danger h4'>{errors.saturateValue.message}</span>}<br/>
@@ -98,13 +98,14 @@ const MoodForm = (props) => {
                             </div>
                         </div>
 
-                        <div className='mt-5'>
+                        <div className='mt-4'>
                             <button type='submit' className='btn btn-lg btn-danger'>Add Your Mood</button>
                         </div>
 
                     </div>
                 </form>
             </div>
+            <Footer/>
         </div>
     )
 }

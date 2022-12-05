@@ -69,10 +69,10 @@ const Orb = (props) => {
                     <div className='col justify-content-center align-items-center' id='sliders'>
                         <p className='form-label text-white h5' name='hueRotateValLabel'>Hue/Color</p>
                         <input style={{width:200}} name='hueRotateValue' step={0.25} type="range" min={0} max={359} onChange={(e)=>handleChange(e)} value={hueRotateVal} ></input>
-                        <p className='form-label text-white h5 pt-2' name='brightnessValLabel'>Brightness</p>
-                        <input style={{width:200}} name='brightnessValue' step={1} type="range" min={50} max={100} onChange={(e)=>handleChange(e)} value={brightnessVal} ></input>
                         <p className='form-label text-white h5 pt-2' name='saturateValLabel'>Saturation</p>
                         <input style={{width:200}} name='saturateValue' step={1} type="range" min={10} max={500} onChange={(e)=>handleChange(e)} value={saturateVal} ></input>
+                        <p className='form-label text-white h5 pt-2' name='brightnessValLabel'>Brightness</p>
+                        <input style={{width:200}} name='brightnessValue' step={1} type="range" min={50} max={100} onChange={(e)=>handleChange(e)} value={brightnessVal} ></input>
                     </div>
                 </div>
                 }
