@@ -16,7 +16,7 @@ import crystalBall from '../assets/swirlyball.png' //top contender
 
 const Orb = (props) => {
 
-    const {formData, setFormData} = props
+    const {formData, setFormData, size} = props
     
     const hueRotateVal = formData.hueRotateValue
     const brightnessVal = formData.brightnessValue
@@ -29,7 +29,7 @@ const Orb = (props) => {
     }
 
     const orbStyle={
-        width:200,
+        width: size,
         filter:`grayscale(100%)sepia(100%)hue-rotate(${hueRotateVal}deg)brightness(${brightnessVal}%)saturate(${saturateVal}%)`
         // filter:`hue-rotate(${hueRotateVal}deg)saturate(${saturationRotateVal}%)`
     }
@@ -57,7 +57,7 @@ const Orb = (props) => {
 
     return (
         <>
-            <div className='col row justify-content-center align-items-center'>
+            <div className='col-12 d-flex justify-content-center align-items-center'>
                 {/* <p id='value'>Hue rotation (0 to 359 degrees) <br/>{hueRotateVal}deg</p>
                 <input name='hue' step={0.5} type="range" min={0} max={359} onChange={(e)=>hueValueChange(e)} value={hueRotateVal} ></input>
                 <p name='saturationLabel'>Saturation (10 to 300%) <br/>{saturationRotateVal}%</p>
@@ -65,15 +65,18 @@ const Orb = (props) => {
                 {/* <p id='value'>Sepia</p>
                 <input name='hue' step={0.5} type="range" min={0} max={100} onChange={(e)=>setSepiaRotateVal (e.target.value)} value={sepiaRotateVal} ></input> */}
                 {setFormData && 
-                <div className='col justify-content-center align-items-center' id='sliders'>
-                    <p className='form-label text-white h5' name='hueRotateValLabel'>Hue/Color</p>
-                    <input style={{width:200}} name='hueRotateValue' step={0.25} type="range" min={0} max={359} onChange={(e)=>handleChange(e)} value={hueRotateVal} ></input>
-                    <p className='form-label text-white h5 pt-2' name='brightnessValLabel'>Brightness</p>
-                    <input style={{width:200}} name='brightnessValue' step={1} type="range" min={50} max={100} onChange={(e)=>handleChange(e)} value={brightnessVal} ></input>
-                    <p className='form-label text-white h5 pt-2' name='saturateValLabel'>Saturation</p>
-                    <input style={{width:200}} name='saturateValue' step={1} type="range" min={10} max={500} onChange={(e)=>handleChange(e)} value={saturateVal} ></input>
-                </div>}
-                <div className='col' id="image">
+                <div className='d-flex col-6 justify-content-center'>
+                    <div className='col justify-content-center align-items-center' id='sliders'>
+                        <p className='form-label text-white h5' name='hueRotateValLabel'>Hue/Color</p>
+                        <input style={{width:200}} name='hueRotateValue' step={0.25} type="range" min={0} max={359} onChange={(e)=>handleChange(e)} value={hueRotateVal} ></input>
+                        <p className='form-label text-white h5 pt-2' name='brightnessValLabel'>Brightness</p>
+                        <input style={{width:200}} name='brightnessValue' step={1} type="range" min={50} max={100} onChange={(e)=>handleChange(e)} value={brightnessVal} ></input>
+                        <p className='form-label text-white h5 pt-2' name='saturateValLabel'>Saturation</p>
+                        <input style={{width:200}} name='saturateValue' step={1} type="range" min={10} max={500} onChange={(e)=>handleChange(e)} value={saturateVal} ></input>
+                    </div>
+                </div>
+                }
+                <div className='col-6' id="image">
                     <div className="tile"><img style={orbStyle} src={crystalBall} alt="" /> </div>
                 </div>
                 {/* <div>

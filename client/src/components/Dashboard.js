@@ -58,12 +58,12 @@ const Dashboard = (props) => {
             <div className='col row align-items-center justify-content-center'>
                 {list.map((mood, index)=>(
                     // <div key={index} className="col-10 row m-3 rounded-4 bg-secondary align-items-center justify-content-center">
-                    <div key={index} style={{background: 'rgba(100,100,100,0.2)'}} className="col-8 m-3 rounded-4 align-items-center justify-content-evenly backdrop-blur-md">
-                        <div className='row justify-content-evenly align-items-center p-4'>
-                            <div className='col-3 p-0'>
+                    <div key={index} style={{background: 'rgba(100,100,100,0.1)'}} className="col-9 m-3 rounded-4 align-items-center justify-content-center backdrop-blur-md">
+                        <div className='row justify-content-around align-items-center p-4'>
+                            <div className='col-4'>
                                 <iframe style={{borderRadius:14}} src={`https://open.spotify.com/embed/track/${mood.trackURI}?utm_source=generator`} width="100%" height='152' frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                             </div>
-                            <div className='col-3 text-white' >
+                            <div className='col-4 text-white' >
                                 <div className='h2 pb-1'>
                                     <p>{mood.moodDescription}</p>
                                 </div>
@@ -82,8 +82,10 @@ const Dashboard = (props) => {
                                 :null
                                 }
                             </div>
-                            <div className='col-3' >
-                                <Orb formData={mood}/>
+                            <div className='col-4 d-flex  justify-content-center'>
+                                <div className='col-11'>
+                                    <Orb size={'110%'} formData={mood}/>
+                                </div>
                             </div>
                         </div>
                     </div>

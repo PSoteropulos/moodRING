@@ -32,9 +32,13 @@ const Landing = () => {
 // things to do:
 // update landing description and photo
 // update instructions and make onClick
-// make navbar button flyout
+// make navbar button flyout (add anonymous/not on dashboard, add toggle for animated bg or static, +standard stuff)
 // make one user page
 // toggle your dashboard/all entries
+// update routes for logged in access, and make a catch all 
+
+// bonus:
+// fuck with spotify api for search
 
 
 
