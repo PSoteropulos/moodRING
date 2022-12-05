@@ -1,15 +1,18 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import Orb from './Orb'
 import styles from './Background.module.css'
 import NavBar from './NavBar'
+import {format} from 'date-fns'
 
 const Dashboard = (props) => {
+    const {id} = useParams
 
     const [list,setList]=useState([])
     const [loggedUser, setLoggedUser] = useState("")
 
+    const navigate = useNavigate()
     // const backGroundBoxStyle = {background: '#b5b5b5', filter:`grayscale(100%)sepia(50%)hue-rotate(${mood.hueRotateValue}deg)brightness(${mood.brightnessValue/2+50}%)saturate(${mood.saturateValue/5}%)`}
 
     useEffect(()=>{
@@ -29,12 +32,28 @@ const Dashboard = (props) => {
             ))
     }, [])
 
+    const dateConvert = (x) => {
+        let date = new Date(x)
+        // let formattedDate = date.getTparseInt(date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear()
+        return date
+    }
+
+    const deleteHandle = (id) => {
+        axios.delete(`http://localhost:8000/api/delete/${id}`, {withCredentials:true})
+            .then((res)=>{
+                console.log(res)
+                setList(list.filter(mood => mood._id !== id))
+            }).catch((err)=>{
+                console.log(err)
+            })
+    }
+
 
     return (
-        // <div>
-        <div className={styles.animatedGradient}>
-            <NavBar/>
-            <p className='text-white h1 p-3'>Moods</p>
+        <div>
+        {/* // <div className={styles.animatedGradient}> */}
+            <NavBar  username={loggedUser.username}/>
+            <p className='text-white h2 m-3'>Moods</p>
             {/* <div className='d-flex flex-wrap'> */}
             <div className='col row align-items-center justify-content-center'>
                 {list.map((mood, index)=>(
@@ -45,15 +64,17 @@ const Dashboard = (props) => {
                                 <iframe style={{borderRadius:14}} src={`https://open.spotify.com/embed/track/${mood.trackURI}?utm_source=generator`} width="100%" height='152' frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                             </div>
                             <div className='col-3 text-white' >
-                                <div className='h5'>
-                                    <p>{mood.postedBy}</p>
-                                </div>
-                                <div className='h2'>
+                                <div className='h2 pb-1'>
                                     <p>{mood.moodDescription}</p>
                                 </div>
+                                <div className=''>
+                                    <p className='h5'>{mood.postedBy}</p>
+                                    <p className=''>{format(dateConvert(mood.createdAt),'MMM d yyyy h:mmaaa')}</p>
+                                </div>
                                 {loggedUser.username==mood.postedBy?
-                                <div className='h5'>
-                                    <p>edit | delete</p>
+                                <div className='h6 pt-1'>
+                                    <button  className='btn btn-primary m-2'><Link style={{textDecoration:"none", color:'white'}} to={`/edit/${mood._id}`}>Edit Mood</Link></button>
+                                    <button onClick={(e)=>deleteHandle(mood._id)} className='btn btn-danger m-2'>Delete Mood</button>
                                 </div>
                                 :null
                                 }

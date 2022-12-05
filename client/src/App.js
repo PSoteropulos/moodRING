@@ -5,17 +5,19 @@ import MoodForm from './components/MoodForm';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
+import EditMood from './components/EditMood';
+import styles from './components/Background.module.css'
 
 function App() {
   return (
-    <div className="App">
+    <div className={`App ${styles.animatedGradient}`}>
       <BrowserRouter>
         <Routes>
           <Route exact path='/' element={<Landing/>} />
           <Route path='/form' element={<MoodForm/>}/>
           <Route path='/dashboard' element={<Dashboard/>}/>
           {/* <Route path="/onemood/:id" element={<OneMood />} /> */}
-          {/* <Route path="/edit/:id" element={<EditMood />} /> */}
+          <Route path="/edit/:id" element={<EditMood />} />
           <Route path='/login' element={<Login/>} />
           <Route path='/register' element={<Register/>} />
         </Routes>

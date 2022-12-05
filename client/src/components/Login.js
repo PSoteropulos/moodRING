@@ -21,7 +21,9 @@ const Login = (props) => {
         axios.post('http://localhost:8000/api/login',{
             email:formData.email,
             password:formData.password
-        },{withCredentials:true, credentials:'include'})
+        }
+        ,{withCredentials:true, credentials:'include'}
+        )
         .then((res)=>{
             // console.log("here is userID", {id:res.data.user._id})
             // setUserID(res.data.user._id)
@@ -44,7 +46,7 @@ const Login = (props) => {
                     <label className='form-label text-white h5 pt-3'>Password:</label>
                     <input type='password' name="password" onChange={(e)=>handleChange(e)} value={formData.password} className='form-control'/>
                     {/* {errors && <span className='text-warning'>{errors}</span>}<br/> */}
-                    <button className='btn btn-info m-5' type='submit'>Login</button>
+                    <button className='btn btn-danger btn-lg m-5' type='submit'>Login</button>
                 </form>
             <Link style={{textDecoration:'none', fontSize:22}} to={'/register'}>Not yet registered? Register here</Link>
         </div>

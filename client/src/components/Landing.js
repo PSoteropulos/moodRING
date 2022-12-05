@@ -6,9 +6,10 @@ import {useNavigate, Link} from 'react-router-dom'
 const Landing = () => {
     
     return (
-        <div className={styles.animatedGradient}>
+        <div>
+        {/* <div className={styles.animatedGradient}> */}
             <div>
-                <h1 className='text-white col p-3'>moodRING</h1>
+                <p className='text-white col p-3 h1' style={{fontFamily:'fantasy'}}>moodRING</p>
                 <img src="" alt="content" />
                 <a href="/form">form</a>
                 <a href="/dashboard">dashboard</a>

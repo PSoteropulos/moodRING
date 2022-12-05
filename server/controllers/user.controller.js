@@ -8,14 +8,17 @@ module.exports = {
 
     registerUser: async (req,res) => {
         try{
+            console.log('req body follows', req.body)
             // Create a new user
             const newUser = await User.create(req.body)
+            console.log(newUser, "found")
             // Create a JWT using our secret key
             const userToken = jwt.sign({_id:newUser._id, email:newUser.email},SECRET)
             // Send the JWT back to user as a cookie
             res.status(201).cookie('userToken', userToken, {httpOnly:true}).json({successMessage:'User logged in', user:newUser})
             // res.status(201).cookie('userToken', userToken, {httpOnly:true, expires:new Date(Date.now() + 90000)}).json({successMessage:'User logged in', user:newUser})
         }catch(error){
+            console.log(error)
             res.status(400).json(error)
         }
     },

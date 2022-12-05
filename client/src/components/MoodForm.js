@@ -48,6 +48,7 @@ const MoodForm = (props) => {
             brightnessValue: formData.brightnessValue,
             saturateValue: formData.saturateValue,
             postedBy: loggedUser.username
+
         },{withCredentials:true})
         .then((res)=>{
             console.log(res)
@@ -58,33 +59,34 @@ const MoodForm = (props) => {
     }
 
     return (
-        <div className={styles.animatedGradient} onClick={()=>setDisplayTooltip(false)}>
-            <NavBar/>
-            <h1 className='m-2 text-white'>Enter Mood</h1>
-            <div className='col-12 row justify-content-center align-items-center'>
+        <div onClick={()=>setDisplayTooltip(false)}>
+            <NavBar username={loggedUser.username}/>
+            <p className='m-3 h2 text-white'>Log a Mood</p>
+            <div className='col-12 row justify-content-center align-items-center p-3'>
                 <form style={{background: 'rgba(100,100,100,0.2)'}} className="col-10 p-3 rounded-4" onSubmit={handleSubmit}>
-                    {displayTooltip&& <div style={{position:'fixed', top:80, width: '80%', height:'80vh', zIndex:1, background: 'rgba(0,0,0,0.96'}} className='text-white justify-content-center rounded-4 h5 m-3 p-4'>
-                        <p className='p-2'>In your Spotify desktop app, right-click the track name or picture.</p>
-                        <p className='p-2'>In the dropdown menu that opens, hover over Share. You should see two flyout options to the right (Copy Song Link, and Embed track).</p>
-                        <p className='p-2'>Hold down ALT on Windows (and whatever the Mac equivalent is, for you crazy Apple kids). The Copy Song Link option should change to 'Copy Spotify URI'. Click this, and paste it in to the form field on moodRING by pressing CTRL + V, or right clicking in the field and selecting paste on the dropdown.</p>
+                    {displayTooltip&& <div style={{position:'fixed', top:'5vh', width: '75%', height:'90vh', zIndex:1, background: 'rgba(0,0,0,0.95)'}} className='text-white justify-content-center rounded-4 h5 m-3 p-4'>
+                        <p className='p-1'>In your Spotify desktop app <a href="http://www.spotify.com">(click here to download)</a>, right-click the track name or picture.</p>
+                        <p className='p-1'>In the dropdown menu that opens, hover over Share. You should see two flyout options to the right (Copy Song Link, and Embed track).</p>
+                        <p className='p-1'>Hold down ALT on Windows (and whatever the Mac equivalent is, for you crazy Apple kids). The Copy Song Link option should change to 'Copy Spotify URI'. Click this, and paste it in to the form field on moodRING by pressing CTRL + V, or right clicking in the field and selecting paste on the dropdown.</p>
+                        <p className='p-1'>(Click anywhere to dismiss this message.)</p>
                         <img style={{width:650}} src={uriTip} alt="instructions" />
                     </div>}
-                    <div className='col row m-4 justify-content-center align-items-center'>
-                        <div className='col-3 m-2 justify-content-center row'>
-                            <label className='form-label text-white h3 p-2'>Track URI:</label>
-                            <p className='text-secondary h5 col-9' onMouseOver={()=>setDisplayTooltip(true)} >Where do I get this?</p>
-                            <input type="text" name="trackURI" className='form-control mb-4 mt-5' onChange={(e)=>handleChange(e)} value={formData.trackURI}/>
-                            {errors.trackURI && <span className='text-danger h4'>{errors.trackURI.message}</span>}<br/>
+                    <div className='col row m-1 justify-content-center align-items-center'>
+                        <div style={{minHeight:'20vh'}} className='col-4 m-3 mb-3 justify-content-center row align-items-evenly'>
+                                <label className='form-label text-white h4 p-2'>Track URI:</label>
+                                <input type="text" name="trackURI" className='form-control m-1' onChange={(e)=>handleChange(e)} value={formData.trackURI}/>
+                                {errors.trackURI && <span className='text-danger h5 m-1'>{errors.trackURI.message}</span>}<br/>
+                                <p className='text-secondary h5 col-9 mt-4' onMouseOver={()=>setDisplayTooltip(true)} >Where do I get this?</p>
                         </div>
-                        <div className='col-3 m-2 row'>
-                            <label className='form-label text-white h3 p-2'>Mood Description:</label>
-                            <p className='h5 opacity-0' >_</p>
-                            <input type="text" name="moodDescription"className='form-control mb-4 mt-5' onChange={(e)=>handleChange(e)} value={formData.moodDescription}/>
-                            {errors.moodDescription && <span className='text-danger h4'>{errors.moodDescription.message}</span>}<br/>
+                        <div style={{minHeight:'20vh'}}className='col-4 row m-3 mb-3 align-items-evenly'>
+                            <label className='form-label text-white h4 p-2'>Mood Description:</label>
+                            <input type="text" name="moodDescription"className='form-control m-1' onChange={(e)=>handleChange(e)} value={formData.moodDescription}/>
+                            {errors.moodDescription && <span className='text-danger h5 m-1'>{errors.moodDescription.message}</span>}<br/>
+                            <p className='opacity-0 h5 mt-4' >_</p>
                         
                         </div>
-                        <div className='col-3 m-2'>
-                            <label className='form-label text-white h3'>Mood Color:</label>
+                        <div className='col-6 mb-4'>
+                            <label className='form-label text-white h4 pt-2'>Mood Color:</label>
                             {errors.hueRotateValue && <span className='text-danger h4'>{errors.hueRotateValue.message}</span>}<br/>
                             {errors.brightnessValue && <span className='text-danger h4'>{errors.brightnessValue.message}</span>}<br/>
                             {errors.saturateValue && <span className='text-danger h4'>{errors.saturateValue.message}</span>}<br/>
@@ -93,8 +95,8 @@ const MoodForm = (props) => {
                             </div>
                         </div>
 
-                        <div className='mt-4'>
-                            <button type='submit' className='btn btn-primary'>Add Your Mood</button>
+                        <div className='mt-5'>
+                            <button type='submit' className='btn btn-lg btn-danger'>Add Your Mood</button>
                         </div>
 
                     </div>

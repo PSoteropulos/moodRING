@@ -21,7 +21,9 @@ const UserSchema = new mongoose.Schema({
         //     validator: val => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
         //     message: "Please enter a valid email"
         // }
-        match: [/^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/, "Invalid email format."]
+        match: [/^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/, "Invalid email format."],
+        unique: true,
+        uniqueCaseInsensitive: true
     },
 
     password: {
@@ -58,6 +60,6 @@ UserSchema.pre('save', async function(next){
     }
 })
 
-UserSchema.plugin(uniqueValidator, { message: 'Username must be unique.' })
+UserSchema.plugin(uniqueValidator, { message: 'Username or email already registered.' })
 
 module.exports = mongoose.model('User', UserSchema)

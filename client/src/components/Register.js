@@ -23,7 +23,9 @@ const Register = (props) => {
             email:formData.email,
             password:formData.password,
             confirmPassword:formData.confirmPassword
-        },{withCredentials:true, credentials:'include'})
+        }
+        ,{withCredentials:true, credentials:'include'}
+        )
         .then((res)=>{
             // Session.set('userID', res.data.user._id)
             // console.log("Session data:", Session.items())
@@ -50,7 +52,7 @@ const Register = (props) => {
                     <label className='form-label text-white h5 pt-2'>Confirm Password:</label>
                     <input type="password" name="confirmPassword" onChange={(e)=>handleChange(e)} value={formData.confirmPassword} className='form-control'/>
                     {errors.confirmPassword && <span className='text-danger h6'>{errors.confirmPassword.message}</span>}<br/>
-                    <button className='btn btn-info mt-3' type='submit'>Register</button>
+                    <button className='btn btn-danger btn-lg mt-3' type='submit'>Register</button>
                 </form>
                 <Link style={{textDecoration:'none', fontSize:22}} to={'/login'}>Already registered? Click here to log in</Link>
         </div>

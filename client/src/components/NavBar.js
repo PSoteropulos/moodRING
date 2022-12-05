@@ -4,6 +4,8 @@ import axios from 'axios'
 
 const NavBar = (props) => {
 
+    const {username} = props
+
     const navigate = useNavigate()
 
     let activeStyle={
@@ -28,15 +30,22 @@ const NavBar = (props) => {
 
 
     return (
-        <div className='col-12 fluid p-3' style={{background: 'rgba(100,100,100, 0.2)',minHeight:"20vh"}}>
-                <h1 className="text-white">moodRING</h1>
-                <h3 className='text-white p-2'>Hey </h3>
-                {/* <div className='border justify-content-start'> */}
-                    <NavLink to="/dashboard" className='m-3' style={({isActive})=> isActive? activeStyle:inActiveStyle}>Home</NavLink>
-                    <NavLink to="/form" className='m-3' style={({isActive})=> isActive? activeStyle:inActiveStyle} >Add a new mood</NavLink>
+        <div className='col row fluid align-items-center fluid p-3' style={{background: 'rgba(100,100,100, 0.2)',minHeight:"15vh"}}>
+            <div className='col-6 justify-content-start align-items-center'>
+                {/* <p className='h4 text-white' style={{fontFamily:'fantasy'}}>Welcome to</p> */}
+                <p className="text-white h1" style={{fontFamily:'fantasy'}}>moodRING</p>
+            </div>
+            <div className='col-6 h4 justify-content-center align-items-center'>
+                <div className='text-white h3' style={{fontFamily:'fantasy'}}>
+                    {username}
+                </div>
+                <div>
+                    <NavLink to="/dashboard" className='ms-3 h5' style={({isActive})=> isActive? activeStyle:inActiveStyle}>Home</NavLink>
+                    <NavLink to="/form" className='ms-3 h5' style={({isActive})=> isActive? activeStyle:inActiveStyle} >Add a new mood</NavLink>
                     {/* <NavLink to="/" className='m-3' style={inActiveStyle} onClick={(e)=>logout(e)} end>Logout</NavLink> */}
-                    <button className='btn btn-danger' onClick={logout}>Logout</button>
-                {/* </div> */}
+                    <button className='btn btn-sm btn-danger ms-3' onClick={logout}>Logout</button>
+                </div>
+            </div>
         </div>
     )
 }
