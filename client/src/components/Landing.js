@@ -19,4 +19,38 @@ const Landing = () => {
     )
 }
 
+
+
+
+
+
+
+
+
+
+
+// things to do:
+// update landing description and photo
+// update instructions and make onClick
+// make navbar button flyout
+// make one user page
+// toggle your dashboard/all entries
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export default Landing
