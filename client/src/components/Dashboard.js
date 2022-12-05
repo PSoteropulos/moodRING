@@ -68,13 +68,16 @@ const Dashboard = (props) => {
                                     <p>{mood.moodDescription}</p>
                                 </div>
                                 <div className=''>
-                                    <p className='h5'>{mood.postedBy}</p>
+                                    {mood.postedBy==loggedUser.username?
+                                    <p className='h5'>You</p>
+                                    :<p className='h5'>{mood.postedBy}</p>
+                                    }
                                     <p className=''>{format(dateConvert(mood.createdAt),'MMM d yyyy h:mmaaa')}</p>
                                 </div>
                                 {loggedUser.username==mood.postedBy?
                                 <div className='h6 pt-1'>
-                                    <button  className='btn btn-primary m-2'><Link style={{textDecoration:"none", color:'white'}} to={`/edit/${mood._id}`}>Edit Mood</Link></button>
-                                    <button onClick={(e)=>deleteHandle(mood._id)} className='btn btn-danger m-2'>Delete Mood</button>
+                                    <button  className='btn m-2'><Link style={{textDecoration:"none", color:'white'}} to={`/edit/${mood._id}`}>Edit Mood</Link></button>
+                                    <button onClick={(e)=>deleteHandle(mood._id)} className='btn text-danger m-2'>Delete Mood</button>
                                 </div>
                                 :null
                                 }
