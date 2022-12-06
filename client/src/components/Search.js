@@ -4,12 +4,12 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 
 const Search = (props) => {
 
-    const [formData, setFormData] = useState({trackname:"", artist:""})
+    const [formData, setFormData] = useState({trackname:"", artist:"", trackURI:""})
     const [accessToken, setAccessToken] = useState('')
     const [searchResults, setSearchResults] = useState([])
 
-    const clientID = '282e65ee03554ba9b977f9d741298af3'
-    const clientSecret = '91a708eb6e82401993f204afe96449d1'
+    const clientID = process.env.REACT_APP_CLIENT_ID
+    const clientSecret = process.env.REACT_APP_CLIENT_SECRET
 
     useEffect(()=>{
         const authParam = {
@@ -40,16 +40,17 @@ const Search = (props) => {
         if (formData.artist==''){
         let searchByTrack = await fetch('https://api.spotify.com/v1/search?q=track:' +  formData.trackname + '&type=track&market=US&limit=10', searchParam)
             .then(response => response.json())
-            .then(data => console.log(data.tracks.items))
-            .then(trackArray => setSearchResults(trackArray))
+            // .then(data => console.log(data.tracks.items))
+            .then(data => setSearchResults(data.tracks.items))
             .catch(err => console.log(err))
-        }else{
+        }
+        else{
         let searchByTrackArtist = await fetch('https://api.spotify.com/v1/search?q=track:' +  formData.trackname + '%20artist:' + formData.artist + '&type=track&market=US&limit=10', searchParam)
             .then(response => response.json())
-            .then(data => console.log(data.tracks.items))
-            .then(trackArray => setSearchResults(trackArray))
-            .catch(err => console.log(err))}
-
+            // .then(data => console.log(data.tracks.items))
+            .then(data => setSearchResults(data.tracks.items))
+            .catch(err => console.log(err))
+        }
     }
 
     const handleChange= (e) => {
@@ -57,6 +58,11 @@ const Search = (props) => {
         let value=e.target.value;
         setFormData({...formData, [key]:value})
     }
+
+    const handleTrackSelect = (uri) => {
+        
+    }
+
 
     const handleSubmit = (e) => {
         
@@ -93,15 +99,17 @@ const Search = (props) => {
                     <button type='submit' className='btn btn-lg btn-danger'>Search</button>
                 </form>
             </div>
-            {/* {searchResults&&
-            <div> */}
-                {/* {searchResults.map((info, index)=>(
-                    <div key={index}>
-                        <p>{info.name}</p>
+            {searchResults&&
+            <div>
+                {searchResults.map((info, index)=>(
+                    <div className='text-white bg-black rounded-2' key={index}>
+                        <iframe style={{borderRadius:14}} src={`https://open.spotify.com/embed/track/${info.uri.replace('spotify:track:', '')}?utm_source=generator`} width="100%" height='152' frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <p><img style={{width: 100}} src={info.album.images[0].url} alt={`${info.album.name} cover art`} />{info.name} by {info.artists[0].name}</p>
+                        <button className='btn btn-lrg btn-danger' onClick={()=>handleTrackSelect(info.uri)}>Select this track</button>
                     </div>
-                ))} */}
-            {/* </div>
-            } */}
+                ))}
+            </div>
+            }
 
         </div>
     )
