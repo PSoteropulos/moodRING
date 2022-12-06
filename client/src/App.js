@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
 import EditMood from './components/EditMood';
+import Search from './components/Search';
 import styles from './components/Background.module.css'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/edit/:id" element={<EditMood />} />
           <Route path='/login' element={<Login/>} />
           <Route path='/register' element={<Register/>} />
+          <Route path='/search' element={<Search/>} />
         </Routes>
       </BrowserRouter>
     </div>
