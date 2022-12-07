@@ -4,9 +4,9 @@ const MoodSchema = new mongoose.Schema({
 
     trackURI: {
         type: String,
-        required:[true, "Track URI is required."],
-        minLength:[5, "Track URI must be longer than 4 characters."],
-        maxLength:[50," Track URI can not exceed 50 characters."]
+        required:[true, "Track selection is required."],
+        // minLength:[5, "Track URI must be longer than 4 characters."],
+        // maxLength:[50," Track URI can not exceed 50 characters."]
     },
 
     moodDescription: {

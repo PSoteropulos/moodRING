@@ -68,7 +68,7 @@ const EditMood = (props) => {
     }
 
     return (
-        <div>
+        <div className='container-fluid no-gutters'>
             <NavBar username={loggedUser.username}/>
             {notFoundError?
             <p className='m-3 h2 text-white'>The entry you are looking for does not exist.</p>
