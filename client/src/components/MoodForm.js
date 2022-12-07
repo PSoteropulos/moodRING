@@ -50,7 +50,8 @@ const MoodForm = (props) => {
             hueRotateValue: formData.hueRotateValue,
             brightnessValue: formData.brightnessValue,
             saturateValue: formData.saturateValue,
-            postedBy: loggedUser.username
+            postedBy: loggedUser.username,
+            postedByID: loggedUser.id
 
         },{withCredentials:true})
         .then((res)=>{
@@ -62,10 +63,11 @@ const MoodForm = (props) => {
     }
 
     return (
-        <div className='container-fluid no-gutters' onClick={()=>setPickingTrack(false)}>
+        <div className='container-fluid no-gutters m-0 p-0' onClick={()=>setPickingTrack(false)}>
             <NavBar username={loggedUser.username}/>
             {/* <p className='m-3 h2 text-white'>Log a Mood</p> */}
             <div className='col-12 row justify-content-center align-items-center p-4'>
+            <p className='h2 text-white pb-2'>Add a new mood</p>
                 <div style={{background: 'rgba(100,100,100,0.1)'}} className="col-10 row justify-content-center p-3 rounded-4" >
                     
                     <div className='row col-12 mt-3 justify-content-center'>

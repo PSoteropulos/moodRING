@@ -1,4 +1,5 @@
 const User = require('../models/user.model')
+const Mood = require('../models/mood.model')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const SECRET = process.env.SECRET_KEY
@@ -49,6 +50,17 @@ module.exports = {
         //     res.status(400).json({error:"line 26 Invalid email or password."})
         // }
         
+    },
+
+    getAllMoodsByUser: (req,res)=>{
+        console.log(req.params)
+        Mood.find({postedBy: req.params.username}).sort({createdAt:-1})
+        .then((result)=>{
+            res.json(result)
+        }).catch((err)=>{
+            console.log(err)
+            res.status(400).json(err)
+        })
     },
 
     // getLoggedUser: (req,res) => {

@@ -39,8 +39,14 @@ const MoodSchema = new mongoose.Schema({
 
     postedBy:{
         type: String,
-        required:[true, "Must be logged in to post."]
+        required:[true, "Must be logged in to post a mood."]
+    },
+
+    postedByID:{
+        type: String,
+        required:[true, "Must be logged in to post a mood."]
     }
+
 
 }, {timestamps:true });
 

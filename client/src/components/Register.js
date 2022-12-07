@@ -39,21 +39,29 @@ const Register = (props) => {
 
     return (
         <div className={styles.animatedGradient}>
-            <h1 className='p-4 text-white'>Register for moodRING</h1>
+            <p className='text-white col pt-5 ' style={{fontFamily:'fantasy', fontSize:56}}>moodRING</p>
                 <form className='col-4 mx-auto p-5' onSubmit={submitHandle}>
-                    <label className='form-label text-white h5 pt-2'>Username:</label>
-                    <input type="text" name="username" onChange={(e)=>handleChange(e)} value={formData.username} className='form-control'/>
-                    {errors.username && <span className='text-danger h6'>{errors.username.message}</span>}<br/>
-                    <label className='form-label text-white h5 pt-2'>Email:</label>
-                    <input type="text" name="email" onChange={(e)=>handleChange(e)} value={formData.email} className='form-control'/>
-                    {errors.email && <span className='text-danger h6'>{errors.email.message}</span>}<br/>
-                    <label className='form-label text-white h5 pt-2'>Password:</label>
-                    <input type='password' name="password" onChange={(e)=>handleChange(e)} value={formData.password} className='form-control'/>
-                    {errors.password && <span className='text-danger h6'>{errors.password.message}</span>}<br/>
-                    <label className='form-label text-white h5 pt-2'>Confirm Password:</label>
-                    <input type="password" name="confirmPassword" onChange={(e)=>handleChange(e)} value={formData.confirmPassword} className='form-control'/>
-                    {errors.confirmPassword && <span className='text-danger h6'>{errors.confirmPassword.message}</span>}<br/>
-                    <button className='btn btn-danger btn-lg mt-3' type='submit'>Register</button>
+                    <div className='p-1'>
+                        <label className='form-label text-white h5 pt-1'>Username:</label>
+                        <input type="text" name="username" onChange={(e)=>handleChange(e)} value={formData.username} className='form-control'/>
+                        {errors.username && <span className='text-danger h6'>{errors.username.message}</span>}<br/>
+                    </div>
+                    <div className='p-1'>
+                        <label className='form-label text-white h5 pt-1'>Email:</label>
+                        <input type="text" name="email" onChange={(e)=>handleChange(e)} value={formData.email} className='form-control'/>
+                        {errors.email && <span className='text-danger h6'>{errors.email.message}</span>}<br/>
+                    </div>
+                    <div className='p-1'>
+                        <label className='form-label text-white h5 pt-1'>Password:</label>
+                        <input type='password' name="password" onChange={(e)=>handleChange(e)} value={formData.password} className='form-control'/>
+                        {errors.password && <span className='text-danger h6'>{errors.password.message}</span>}<br/>
+                    </div>
+                    <div className='p-1'>
+                        <label className='form-label text-white h5 pt-1'>Confirm Password:</label>
+                        <input type="password" name="confirmPassword" onChange={(e)=>handleChange(e)} value={formData.confirmPassword} className='form-control'/>
+                        {errors.confirmPassword && <span className='text-danger h6'>{errors.confirmPassword.message}</span>}<br/>
+                    </div>
+                    <button className='btn btn-danger btn-lg mt-4' type='submit'>Register</button>
                 </form>
                 <Link style={{textDecoration:'none', fontSize:22}} to={'/login'}>Already registered? Click here to log in</Link>
                 <Footer/>

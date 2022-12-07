@@ -7,30 +7,33 @@ import NavBar from './NavBar'
 import Footer from './Footer'
 import {format} from 'date-fns'
 
-const Dashboard = (props) => {
-    const {id} = useParams
+const ViewUser = (props) => {
+
+    const {username} = useParams()
 
     const [list,setList]=useState([])
     const [loggedUser, setLoggedUser] = useState("")
+    const [notFoundError, setNotFoundError] = useState("")
 
     const navigate = useNavigate()
     // const backGroundBoxStyle = {background: '#b5b5b5', filter:`grayscale(100%)sepia(50%)hue-rotate(${mood.hueRotateValue}deg)brightness(${mood.brightnessValue/2+50}%)saturate(${mood.saturateValue/5}%)`}
 
     useEffect(()=>{
-        axios.get('http://localhost:8000/api/allMoods', {withCredentials:true})
-            .then((res)=>{
-                console.log(res)
-                setList(res.data)
-            }).catch((err)=>{
-                console.log(err)
-            })
-            axios.get('http://localhost:8000/api/getLoggedUser', {withCredentials:true})
+        axios.get('http://localhost:8000/api/getLoggedUser', {withCredentials:true})
             .then((res)=>(
                 console.log(res),
                 setLoggedUser({id:res.data.user._id, username:res.data.user.username})
             )).catch((err)=>(
                 console.log(err)
             ))
+        axios.get(`http://localhost:8000/api/view/${username}`, {withCredentials:true})
+            .then((res)=>{
+                console.log(res)
+                setList(res.data)
+            }).catch((err)=>{
+                console.log(err)
+                setNotFoundError("A user with that name does not exist.")
+            })
     }, [])
 
     const dateConvert = (x) => {
@@ -52,12 +55,21 @@ const Dashboard = (props) => {
 
     return (
         <div className='container-fluid no-gutters m-0 p-0'>
-        {/* // <div className={styles.animatedGradient}> */}
             <NavBar username={loggedUser.username}/>
-            {/* <p className='text-white h2 m-3'>Moods</p> */}
-            {/* <div className='d-flex flex-wrap'> */}
+            {!list[0]?
+            <div className='row justify-content-center m-5'>
+                <p className='m-5 col-6 h2 text-white'>A user with that name does not exist, or they have not posted anything yet.</p>
+            </div>
+            :
             <div className='col row align-items-center justify-content-center p-3'>
-            <p className='h2 text-white'>The Feed</p>
+                {loggedUser.username==username?
+                <p className='h2 text-white'>Your moods</p>
+                :
+                <>
+                    <p className='h5 text-white'>All moods posted by</p>
+                    <p className='h2 text-white'>{username}</p>
+                </>
+                }
                 {list.map((mood, index)=>(
                     // <div key={index} className="col-10 row m-3 rounded-4 bg-secondary align-items-center justify-content-center">
                     <div key={index} style={{background: 'rgba(100,100,100,0.1)'}} className="col-10 m-3 rounded-4 align-items-center justify-content-center backdrop-blur-md">
@@ -96,9 +108,10 @@ const Dashboard = (props) => {
                 ))
                 }
             </div>
+            }
             <Footer/>
         </div>
     )
 }
 
-export default Dashboard
+export default ViewUser

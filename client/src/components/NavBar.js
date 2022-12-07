@@ -30,20 +30,20 @@ const NavBar = (props) => {
 
 
     return (
-        <div className='col row fluid align-items-center justify-content-evenly fluid p-3' style={{background: 'rgba(100,100,100, 0.15)',minHeight:"15vh"}}>
-            <div className='col-5 justify-content-center align-items-center'>
+        <div className='container-fluid no-gutters justify-content-evenly row m-0 p-0' style={{background: 'rgba(100,100,100, 0.15)',minHeight:"15vh"}}>
+            <div className='col-4 row justify-content-center align-items-center'>
                 {/* <p className='h4 text-white' style={{fontFamily:'fantasy'}}>Welcome to</p> */}
-                <p className="text-white" style={{fontFamily:'fantasy', fontSize:58}}>moodRING</p>
-            </div>
-            <div className='col-5 flex h4 justify-content-end align-items-center'>
-                <div className='text-white h3' style={{fontFamily:'fantasy'}}>
+                <p className="text-white m-0 p-0 row justify-content-start" style={{fontFamily:'fantasy', fontSize:58}}>moodRING</p>
+                <p className='text-white mb-2 p-0 h2 row justify-content-start' style={{fontFamily:'fantasy'}}>
                     {username}
-                </div>
-                <div>
-                    <NavLink to="/dashboard" className='ms-3 h5' style={({isActive})=> isActive? activeStyle:inActiveStyle}>Home</NavLink>
-                    <NavLink to="/form" className='ms-3 h5' style={({isActive})=> isActive? activeStyle:inActiveStyle} >Add a new mood</NavLink>
-                    {/* <NavLink to="/" className='m-3' style={inActiveStyle} onClick={(e)=>logout(e)} end>Logout</NavLink> */}
-                    <button className='btn btn-sm btn-danger ms-3' onClick={logout}>Logout</button>
+                </p>
+            </div>
+            <div className='col-4 row justify-content-end align-items-center'>
+                <div className='row justify-content-end'>
+                    <NavLink to="/dashboard" className='h5 row justify-content-end' style={({isActive})=> isActive? activeStyle:inActiveStyle}>The Feed</NavLink>
+                    <NavLink to={`/view/${username}`} className='h5 row justify-content-end' style={({isActive})=> isActive? activeStyle:inActiveStyle}>Your Moods</NavLink>
+                    <NavLink to="/form" className='h5 row justify-content-end' style={({isActive})=> isActive? activeStyle:inActiveStyle}>New mood</NavLink>
+                    <NavLink to='/' className='h5 row justify-content-end' style={inActiveStyle}onClick={logout}>Logout</NavLink>
                 </div>
             </div>
         </div>
