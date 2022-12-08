@@ -116,7 +116,7 @@ const Search = (props) => {
                             </div>
                             <div className="w-100"></div>
                             <div className='col p-2'>
-                                <label className='form-label text-white h5 p-2'>Artist</label>
+                                <label className='form-label text-white h5 p-2'>Artist (Optional)</label>
                                 <input type="text" name="artistSearch" className='form-control' onChange={(e)=>handleChange(e)} value={formData.artistSearch}/>
                             </div>
                         </div>
