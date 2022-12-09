@@ -45,12 +45,12 @@ const Register = (props) => {
                 <form className='col-12 row justify-content-center align-items-center' onSubmit={submitHandle}>
                     <div className='col-10'>
                         <label className='form-label text-white h5'>Username:</label>
-                        <input type="text" name="username" onChange={(e)=>handleChange(e)} value={formData.username} className='form-control'/>
+                        <input type="text" name="username" autoComplete='username' onChange={(e)=>handleChange(e)} value={formData.username} className='form-control'/>
                         {errors.username && <span className='text-danger h6'>{errors.username.message}</span>}<br/>
                     </div>
                     <div className='col-10'>
                         <label className='form-label text-white h5'>Email:</label>
-                        <input type="text" name="email" onChange={(e)=>handleChange(e)} value={formData.email} className='form-control'/>
+                        <input type="text" name="email" autoComplete='email' onChange={(e)=>handleChange(e)} value={formData.email} className='form-control'/>
                         {errors.email && <span className='text-danger h6'>{errors.email.message}</span>}<br/>
                     </div>
                     <div className='col-10'>
