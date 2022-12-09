@@ -104,7 +104,9 @@ const Search = (props) => {
         <div className='container-fluid row justify-content-center' onClick={()=>setPickingTrack(false)}>
             <div className='col-10 row justify-content-center'>
                 {!trackSelected?
-                    <form style={{background: 'rgba(100,100,100,0.1)'}} className="row col p-3 rounded-4 justify-content-center" onSubmit={search}>
+                    <form 
+                    // style={{background: 'rgba(100,100,100,0.1)'}} 
+                    className="row col p-3 rounded-4 justify-content-center" onSubmit={search}>
                         <div className='col-6 p-2 row justify-content-center'>
                             <div className='col p-2'>
                                 <p className='text-white h3 p-2'>What's your song?</p>
@@ -125,7 +127,7 @@ const Search = (props) => {
                         </div>
                     </form>
                     :
-                    <div style={{background: 'rgba(100,100,100,0.1)'}} className="row p-4 col rounded-4 justify-content-center" onSubmit={search}>
+                    <div className="row p-4 col rounded-4 justify-content-center" onSubmit={search}>
                             <div className='col p-3 row justify-content-center align-items-center'>
                                 <iframe className='col-10' style={{borderRadius:14}} src={`https://open.spotify.com/embed/track/${formData.trackURI.replace('spotify:track:', '')}?utm_source=generator`} width="100%" height='232' frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                             </div>

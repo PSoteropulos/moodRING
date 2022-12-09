@@ -6,6 +6,7 @@ import styles from './Background.module.css'
 import NavBar from './NavBar'
 import Footer from './Footer'
 import uriTip from '../assets/uri_img.png'
+import NotFound from './NotFound'
 
 const EditMood = (props) => {
 
@@ -68,6 +69,10 @@ const EditMood = (props) => {
     }
 
     return (
+        <>
+        {!loggedUser?
+        <NotFound />
+        :
         <div className='container-fluid no-gutters m-0 p-0'>
             <NavBar username={loggedUser.username}/>
             {notFoundError?
@@ -137,6 +142,8 @@ const EditMood = (props) => {
             }
             <Footer/>
         </div>
+        }
+        </>
     )
 }
 

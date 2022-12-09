@@ -7,6 +7,7 @@ import NavBar from './NavBar'
 import Footer from './Footer'
 import uriTip from '../assets/uri_img.png'
 import Search from './Search'
+import NotFound from './NotFound'
 
 const MoodForm = (props) => {
 
@@ -63,6 +64,10 @@ const MoodForm = (props) => {
     }
 
     return (
+        <>
+        {!loggedUser?
+        <NotFound />
+        :
         <div className='container-fluid no-gutters m-0 p-0' onClick={()=>setPickingTrack(false)}>
             <NavBar username={loggedUser.username}/>
             {/* <p className='m-3 h2 text-white'>Log a Mood</p> */}
@@ -71,7 +76,7 @@ const MoodForm = (props) => {
                 <div style={{background: 'rgba(100,100,100,0.1)'}} className="col-10 row justify-content-center p-3 rounded-4" >
                     
                     <div className='row col-12 mt-3 justify-content-center'>
-                        <div className='row col-12 justify-content-center'>
+                        <div style={{background: 'rgba(100,100,100,0.1)'}} className='row col-10 rounded-4 justify-content-center'>
                             <Search formData={formData} setFormData={setFormData} pickingTrack={pickingTrack} setPickingTrack={setPickingTrack}/>
                         </div>
                     {errors.trackURI && <p className=' col-8 text-danger h5'>{errors.trackURI.message}</p>}
@@ -110,6 +115,8 @@ const MoodForm = (props) => {
             </div>
             <Footer/>
         </div>
+        }
+        </>
     )
 }
 

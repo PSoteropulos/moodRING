@@ -6,6 +6,7 @@ import styles from './Background.module.css'
 import NavBar from './NavBar'
 import Footer from './Footer'
 import {format} from 'date-fns'
+import NotFound from './NotFound'
 
 const ViewUser = (props) => {
 
@@ -34,7 +35,7 @@ const ViewUser = (props) => {
                 console.log(err)
                 setNotFoundError("A user with that name does not exist.")
             })
-    }, [])
+    }, [username])
 
     const dateConvert = (x) => {
         let date = new Date(x)
@@ -54,6 +55,10 @@ const ViewUser = (props) => {
 
 
     return (
+        <>
+        {!loggedUser?
+        <NotFound />
+        :
         <div className='container-fluid no-gutters m-0 p-0'>
             <NavBar username={loggedUser.username}/>
             {!list[0]?
@@ -92,9 +97,9 @@ const ViewUser = (props) => {
                                 </div>
                                 {loggedUser.username==mood.postedBy?
                                 <div className='h6 pt-1'>
-                                    <button  className='btn m-2'><Link style={{textDecoration:"none", color:'white'}} to={`/edit/${mood._id}`}>Edit Mood</Link></button>
-                                    <button onClick={(e)=>deleteHandle(mood._id)} className='btn text-danger m-2'>Delete Mood</button>
-                                </div>
+                                <button style={{background: 'rgba(100,100,100,0.3)'}} className='btn btn-sm m-1'><Link style={{textDecoration:"none", color:'white'}} to={`/edit/${mood._id}`}>Edit Mood</Link></button>
+                                <button onClick={(e)=>deleteHandle(mood._id)} style={{textDecoration:"none", color:'white', background: 'rgba(100,100,100,0.3)'}} className='btn btn-sm m-1'>Delete Mood</button>
+                            </div>
                                 :null
                                 }
                             </div>
@@ -111,6 +116,8 @@ const ViewUser = (props) => {
             }
             <Footer/>
         </div>
+        }
+        </>
     )
 }
 

@@ -6,6 +6,7 @@ import styles from './Background.module.css'
 import NavBar from './NavBar'
 import Footer from './Footer'
 import {format} from 'date-fns'
+import NotFound from './NotFound'
 
 const Dashboard = (props) => {
     const {id} = useParams
@@ -51,6 +52,10 @@ const Dashboard = (props) => {
 
 
     return (
+        <>
+        {!loggedUser?
+        <NotFound />
+        :
         <div className='container-fluid no-gutters m-0 p-0'>
         {/* // <div className={styles.animatedGradient}> */}
             <NavBar username={loggedUser.username}/>
@@ -60,7 +65,7 @@ const Dashboard = (props) => {
             <p className='h2 text-white'>The Feed</p>
                 {list.map((mood, index)=>(
                     // <div key={index} className="col-10 row m-3 rounded-4 bg-secondary align-items-center justify-content-center">
-                    <div key={index} style={{background: 'rgba(100,100,100,0.1)'}} className="col-10 m-3 rounded-4 align-items-center justify-content-center backdrop-blur-md">
+                    <div key={index} style={{background: 'rgba(100,100,100,0.1)', minHeight:'30vh'}} className="col-10 row m-3 rounded-4 align-items-center justify-content-center backdrop-blur-md">
                         <div className='row justify-content-around align-items-center p-4'>
                             <div className='col-4'>
                                 <iframe style={{borderRadius:14}} src={`https://open.spotify.com/embed/track/${mood.trackURI}?utm_source=generator`} width="100%" height='152' frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -80,8 +85,8 @@ const Dashboard = (props) => {
                                 </div>
                                 {loggedUser.username==mood.postedBy?
                                 <div className='h6 pt-1'>
-                                    <button  className='btn m-2'><Link style={{textDecoration:"none", color:'white'}} to={`/edit/${mood._id}`}>Edit Mood</Link></button>
-                                    <button onClick={(e)=>deleteHandle(mood._id)} className='btn text-danger m-2'>Delete Mood</button>
+                                    <button style={{background: 'rgba(100,100,100,0.3)'}} className='btn btn-sm m-1'><Link style={{textDecoration:"none", color:'white'}} to={`/edit/${mood._id}`}>Edit Mood</Link></button>
+                                    <button onClick={(e)=>deleteHandle(mood._id)} style={{textDecoration:"none", color:'white', background: 'rgba(100,100,100,0.3)'}} className='btn btn-sm m-1'>Delete Mood</button>
                                 </div>
                                 :null
                                 }
@@ -98,6 +103,8 @@ const Dashboard = (props) => {
             </div>
             <Footer/>
         </div>
+        }
+        </>
     )
 }
 
