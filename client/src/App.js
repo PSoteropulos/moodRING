@@ -38,8 +38,8 @@ function App() {
           {/* <Route path="/onemood/:id" element={<OneMood />} /> */}
           <Route path="/edit/:id" element={<EditMood />} />
           <Route path="/view/:username" element={<ViewUser />} />
-          <Route path='/login' element={<Login/>} />
-          <Route path='/register' element={<Register/>} />
+          {/* <Route path='/login' element={<Login/>} /> */}
+          {/* <Route path='/register' element={<Register/>} /> */}
           <Route path='*' element={<NotFound/>} />
         </Routes>
       </BrowserRouter>

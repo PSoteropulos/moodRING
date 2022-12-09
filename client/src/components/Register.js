@@ -5,6 +5,7 @@ import styles from './Background.module.css'
 import Footer from './Footer'
 
 const Register = (props) => {
+    const {logReg, setLogReg} = props
 
     const navigate = useNavigate()
     
@@ -38,33 +39,37 @@ const Register = (props) => {
     }
 
     return (
-        <div className={styles.animatedGradient}>
-            <p className='text-white col pt-5 ' style={{fontFamily:'fantasy', fontSize:56}}>moodRING</p>
-                <form className='col-4 mx-auto p-5' onSubmit={submitHandle}>
-                    <div className='p-1'>
-                        <label className='form-label text-white h5 pt-1'>Username:</label>
+        // <div className={styles.animatedGradient}>
+        <div>
+            {/* <p className='text-white col pt-5 ' style={{fontFamily:'fantasy', fontSize:56}}>moodRING</p> */}
+                <form className='col-12 row justify-content-center align-items-center' onSubmit={submitHandle}>
+                    <div className='col-10'>
+                        <label className='form-label text-white h5'>Username:</label>
                         <input type="text" name="username" onChange={(e)=>handleChange(e)} value={formData.username} className='form-control'/>
                         {errors.username && <span className='text-danger h6'>{errors.username.message}</span>}<br/>
                     </div>
-                    <div className='p-1'>
-                        <label className='form-label text-white h5 pt-1'>Email:</label>
+                    <div className='col-10'>
+                        <label className='form-label text-white h5'>Email:</label>
                         <input type="text" name="email" onChange={(e)=>handleChange(e)} value={formData.email} className='form-control'/>
                         {errors.email && <span className='text-danger h6'>{errors.email.message}</span>}<br/>
                     </div>
-                    <div className='p-1'>
-                        <label className='form-label text-white h5 pt-1'>Password:</label>
+                    <div className='col-10'>
+                        <label className='form-label text-white h5'>Password:</label>
                         <input type='password' name="password" onChange={(e)=>handleChange(e)} value={formData.password} className='form-control'/>
                         {errors.password && <span className='text-danger h6'>{errors.password.message}</span>}<br/>
                     </div>
-                    <div className='p-1'>
-                        <label className='form-label text-white h5 pt-1'>Confirm Password:</label>
+                    <div className='col-10'>
+                        <label className='form-label text-white h5'>Confirm Password:</label>
                         <input type="password" name="confirmPassword" onChange={(e)=>handleChange(e)} value={formData.confirmPassword} className='form-control'/>
                         {errors.confirmPassword && <span className='text-danger h6'>{errors.confirmPassword.message}</span>}<br/>
                     </div>
-                    <button className='btn btn-danger btn-lg mt-4' type='submit'>Register</button>
+                    <div className='p-2 m-2 col-10'>
+                        <button className='btn btn-danger btn-lg' type='submit'>Register</button>
+                    </div>
                 </form>
-                <Link style={{textDecoration:'none', fontSize:22}} to={'/login'}>Already registered? Click here to log in</Link>
-                <Footer/>
+                <p onClick={()=>setLogReg(true)} className='text-white h5'>Already registered? Click to log in.</p>
+                {/* <Link style={{textDecoration:'none', fontSize:22}} to={'/login'}>Already registered? Click here to log in</Link> */}
+                {/* <Footer/> */}
         </div>
     )
 }

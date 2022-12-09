@@ -5,6 +5,7 @@ import styles from './Background.module.css'
 import Footer from './Footer'
 
 const Login = (props) => {
+    const {logReg, setLogReg} = props
     
     const navigate = useNavigate()
     
@@ -38,23 +39,27 @@ const Login = (props) => {
     }
 
     return (
-        <div className={styles.animatedGradient}>
-            <p className='text-white col pt-5 ' style={{fontFamily:'fantasy', fontSize:56}}>moodRING</p>
+        // <div className={styles.animatedGradient}>
+        <div>
+            {/* <p className='text-white col pt-5 ' style={{fontFamily:'fantasy', fontSize:56}}>moodRING</p> */}
                 {errors && <span className='text-danger h4'>{errors}</span>}<br/>
-                <form className='col-4 mx-auto pb-5' onSubmit={submitHandle}>
-                    <div className='p-3'>
-                        <label className='form-label text-white h5 pt-3'>Email:</label>
+                <form className='col-12 row justify-content-center align-items-center p-3 pt-5' onSubmit={submitHandle}>
+                    <div className='p-4 col-10'>
+                        <label className='form-label text-white h5'>Email:</label>
                         <input type="text" name="email" onChange={(e)=>handleChange(e)} value={formData.email} className='form-control'/>
                     </div>
-                    <div className='p-3'>
-                        <label className='form-label text-white h5 pt-3'>Password:</label>
+                    <div className='p-4 col-10'>
+                        <label className='form-label text-white h5'>Password:</label>
                         <input type='password' name="password" onChange={(e)=>handleChange(e)} value={formData.password} className='form-control'/>
                     {/* {errors && <span className='text-warning'>{errors}</span>}<br/> */}
                     </div>
-                    <button className='btn btn-danger btn-lg mt-5 m-2' type='submit'>Login</button>
+                    <div className='p-4 m-2 col-10'>
+                        <button className='btn btn-danger btn-lg' type='submit'>Login</button>
+                    </div>
                 </form>
-            <Link style={{textDecoration:'none', fontSize:22}} to={'/register'}>Not yet registered? Register here</Link>
-            <Footer/>
+            <p onClick={()=> setLogReg(false)} className='text-white h5'>Not yet registered? Click to register.</p>
+            {/* <Link style={{textDecoration:'none', fontSize:22}} to={'/register'}>Not yet registered? Register here.</Link> */}
+            {/* <Footer/> */}
         </div>
     )
 }
