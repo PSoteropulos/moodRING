@@ -11,23 +11,23 @@ import NotFound from './NotFound'
 const ViewUser = (props) => {
 
     const {username} = useParams()
-    const {loggedUser} = props
+    // const {loggedUser} = props
 
     const [list,setList]=useState([])
-    // const [loggedUser, setLoggedUser] = useState("")
+    const [loggedUser, setLoggedUser] = useState("")
     const [notFoundError, setNotFoundError] = useState("")
 
     const navigate = useNavigate()
     // const backGroundBoxStyle = {background: '#b5b5b5', filter:`grayscale(100%)sepia(50%)hue-rotate(${mood.hueRotateValue}deg)brightness(${mood.brightnessValue/2+50}%)saturate(${mood.saturateValue/5}%)`}
 
     useEffect(()=>{
-        // axios.get('http://localhost:8000/api/getLoggedUser', {withCredentials:true})
-        //     .then((res)=>(
-        //         console.log(res),
-        //         setLoggedUser({id:res.data.user._id, username:res.data.user.username})
-        //     )).catch((err)=>(
-        //         console.log(err)
-        //     ))
+        axios.get('http://localhost:8000/api/getLoggedUser', {withCredentials:true})
+            .then((res)=>(
+                console.log(res),
+                setLoggedUser({id:res.data.user._id, username:res.data.user.username})
+            )).catch((err)=>(
+                console.log(err)
+            ))
         axios.get(`http://localhost:8000/api/view/${username}`, {withCredentials:true})
             .then((res)=>{
                 console.log(res)

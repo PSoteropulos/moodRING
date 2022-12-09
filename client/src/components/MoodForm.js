@@ -12,26 +12,26 @@ import NotFound from './NotFound'
 const MoodForm = (props) => {
 
     const navigate = useNavigate()
-    const {loggedUser} = props
+    // const {loggedUser} = props
 
     const [formData, setFormData] = useState({trackURI:"", moodDescription:"", hueRotateValue:0, brightnessValue:75, saturateValue:100, trackSearch:'', artistSearch:'' })
     const [errors, setErrors] = useState({})
     const [displayTooltip, setDisplayTooltip] = useState(false)
     const [pickingTrack, setPickingTrack] = useState(false)
 
-    // const [loggedUser, setLoggedUser] = useState("")
+    const [loggedUser, setLoggedUser] = useState("")
 
     // const backGroundBoxStyle = {background: '#b5b5b5', filter:`grayscale(100%)sepia(50%)hue-rotate(${mood.hueRotateValue}deg)brightness(${mood.brightnessValue/2+50}%)saturate(${mood.saturateValue/5}%)`}
 
-    // useEffect(()=>{
-    //         axios.get('http://localhost:8000/api/getLoggedUser', {withCredentials:true})
-    //         .then((res)=>(
-    //             console.log(res),
-    //             setLoggedUser({id:res.data.user._id, username:res.data.user.username})
-    //         )).catch((err)=>(
-    //             console.log(err)
-    //         ))
-    // }, [])
+    useEffect(()=>{
+            axios.get('http://localhost:8000/api/getLoggedUser', {withCredentials:true})
+            .then((res)=>(
+                console.log(res),
+                setLoggedUser({id:res.data.user._id, username:res.data.user.username})
+            )).catch((err)=>(
+                console.log(err)
+            ))
+    }, [])
 
     const handleChange= (e) => {
         let key=e.target.name;
