@@ -32,15 +32,15 @@ function App() {
     <div className={`App ${styles.animatedGradient}`}>
       <BrowserRouter>
         <Routes>
-          <Route exact path='/' element={<Landing/>} />
-          <Route path='/form' element={<MoodForm/>}/>
-          <Route path='/dashboard' element={<Dashboard/>}/>
+          <Route exact path='/' element={<Landing loggedUser={loggedUser}/>} />
+          <Route path='/form' element={<MoodForm loggedUser={loggedUser}/>}/>
+          <Route path='/dashboard' element={<Dashboard loggedUser={loggedUser}/>}/>
           {/* <Route path="/onemood/:id" element={<OneMood />} /> */}
-          <Route path="/edit/:id" element={<EditMood />} />
-          <Route path="/view/:username" element={<ViewUser />} />
+          <Route path="/edit/:id" element={<EditMood loggedUser={loggedUser}/>} />
+          <Route path="/view/:username" element={<ViewUser loggedUser={loggedUser}/>} />
           {/* <Route path='/login' element={<Login/>} /> */}
           {/* <Route path='/register' element={<Register/>} /> */}
-          <Route path='*' element={<NotFound/>} />
+          <Route path='*' element={<NotFound loggedUser={loggedUser}/>} />
         </Routes>
       </BrowserRouter>
     </div>

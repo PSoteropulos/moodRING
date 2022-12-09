@@ -10,9 +10,11 @@ import NotFound from './NotFound'
 
 const Dashboard = (props) => {
     const {id} = useParams
+    const {loggedUser} = props
+
 
     const [list,setList]=useState([])
-    const [loggedUser, setLoggedUser] = useState("")
+    // const [loggedUser, setLoggedUser] = useState("")
 
     const navigate = useNavigate()
     // const backGroundBoxStyle = {background: '#b5b5b5', filter:`grayscale(100%)sepia(50%)hue-rotate(${mood.hueRotateValue}deg)brightness(${mood.brightnessValue/2+50}%)saturate(${mood.saturateValue/5}%)`}
@@ -21,17 +23,18 @@ const Dashboard = (props) => {
         axios.get('http://localhost:8000/api/allMoods', {withCredentials:true})
             .then((res)=>{
                 console.log(res)
+                console.log(loggedUser)
                 setList(res.data)
             }).catch((err)=>{
                 console.log(err)
             })
-            axios.get('http://localhost:8000/api/getLoggedUser', {withCredentials:true})
-            .then((res)=>(
-                console.log(res),
-                setLoggedUser({id:res.data.user._id, username:res.data.user.username})
-            )).catch((err)=>(
-                console.log(err)
-            ))
+            // axios.get('http://localhost:8000/api/getLoggedUser', {withCredentials:true})
+            // .then((res)=>(
+            //     console.log(res),
+            //     setLoggedUser({id:res.data.user._id, username:res.data.user.username})
+            // )).catch((err)=>(
+            //     console.log(err)
+            // ))
     }, [])
 
     const dateConvert = (x) => {
@@ -53,9 +56,8 @@ const Dashboard = (props) => {
 
     return (
         <>
-        {!loggedUser?
-        <NotFound />
-        :
+        {loggedUser?
+        <>
         <div className='container-fluid no-gutters m-0 p-0'>
         {/* // <div className={styles.animatedGradient}> */}
             <NavBar username={loggedUser.username}/>
@@ -103,6 +105,9 @@ const Dashboard = (props) => {
             </div>
             <Footer/>
         </div>
+        </>
+        :
+        <NotFound /> 
         }
         </>
     )
