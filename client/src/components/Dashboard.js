@@ -12,7 +12,6 @@ const Dashboard = (props) => {
     const {id} = useParams
     // const {loggedUser} = props
 
-
     const [list,setList]=useState([])
     const [loggedUser, setLoggedUser] = useState("")
 
@@ -81,7 +80,6 @@ const Dashboard = (props) => {
                                     <Link className='h5' style={{textDecoration:"none"}} to={`/view/${mood.postedBy}`}>You</Link>
                                     :
                                     <Link className='h5' style={{textDecoration:"none"}} to={`/view/${mood.postedBy}`}>{mood.postedBy}</Link>
-                                    // <p className='h5'>{mood.postedBy}</p>
                                     }
                                     <p className=''>{format(dateConvert(mood.createdAt),'MMM d yyyy h:mmaaa')}</p>
                                 </div>
