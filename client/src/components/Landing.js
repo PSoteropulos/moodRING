@@ -24,7 +24,7 @@ const Landing = () => {
                                 <div className='text-white h5 p-2 col-12 rounded-4' style={{background: 'rgba(100,100,100,0.2)'}}>
                                     <p>From the Merriam-Webster dictionary</p>
                                     <p>music: the science or art of ordering tones or sounds in succession, in combination, and in temporal relationships to produce a composition having unity and continuity</p>
-                                    <p>What music means to each of us and how we interpret what we hear is as unique as were are. What is not unique is the power a song can have on a person. At moodRING we want you to express that moment in time, with words and with color, to immortalize your experience.</p>
+                                    <p>What music means to each of us and how we interpret what we hear is as unique as we are. What is not unique is the power a song can have on a person. At moodRING we want you to express that moment in time, with words and with color, to immortalize your experience.</p>
                                 </div>
                             </div>
                             <div className='col-12 row justify-content-center align-items-center p-2'>
