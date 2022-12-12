@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { useNavigate, useParams, Link } from 'react-router-dom'
-import Orb from './Orb'
-import styles from './Background.module.css'
-import NavBar from './NavBar'
-import Footer from './Footer'
+import styles from '../components/Background.module.css'
+import Orb from '../components/Orb'
+import NavBar from '../components/NavBar'
+import Footer from '../components/Footer'
+import NotFound from '../components/NotFound'
 import uriTip from '../assets/uri_img.png'
-import NotFound from './NotFound'
 
 const EditMood = (props) => {
 

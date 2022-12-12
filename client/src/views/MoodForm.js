@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Orb from "../components/Orb";
-import styles from "./Background.module.css";
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
-import uriTip from "../assets/uri_img.png";
+import styles from '../components/Background.module.css'
+import Orb from '../components/Orb'
+import NavBar from '../components/NavBar'
+import Footer from '../components/Footer'
+import NotFound from '../components/NotFound'
 import Search from "../components/Search";
-import NotFound from "../components/NotFound";
+import uriTip from "../assets/uri_img.png";
 
 const MoodForm = (props) => {
     const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import styles from "./Background.module.css";
 import { useNavigate, Link } from "react-router-dom";
 import screenshot from "../assets/moodringclip.PNG";
+import styles from '../components/Background.module.css'
 import Footer from "../components/Footer";
 import Login from "../components/Login";
 import Register from "../components/Register";

@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import Orb from './Orb'
-import styles from './Background.module.css'
-import NavBar from './NavBar'
-import Footer from './Footer'
+import styles from '../components/Background.module.css'
+import Orb from '../components/Orb'
+import NavBar from '../components/NavBar'
+import Footer from '../components/Footer'
+import NotFound from '../components/NotFound'
 import {format} from 'date-fns'
-import NotFound from './NotFound'
 
 const Dashboard = (props) => {
     const {id} = useParams
