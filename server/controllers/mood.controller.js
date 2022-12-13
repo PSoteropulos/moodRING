@@ -35,7 +35,7 @@ module.exports = {
     },
 
     updateMood:(req,res)=>{
-        Mood.updateOne({_id:req.params.id},req.body,{new:true, runValidators:true})
+        Mood.updateOne({_id:req.params.id}, req.body, {new:true, runValidators:true})
         .then((result)=>{
             res.json(result)
         }).catch((err)=>{
