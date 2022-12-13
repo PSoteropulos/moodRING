@@ -73,6 +73,5 @@ const Landing = () => {
 
 // things to do:
 // make navbar button flyout (add anonymous/not on dashboard, add toggle for animated bg or static, +standard stuff)
-// make views from components
 
 export default Landing;
