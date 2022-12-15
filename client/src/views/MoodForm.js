@@ -91,7 +91,7 @@ const MoodForm = (props) => {
       ) : (
         <div
           className="container-fluid no-gutters m-0 p-0"
-          onClick={() => setPickingTrack(false)}
+          // onClick={() => setPickingTrack(false)}
         >
           <NavBar />
           {/* <p className='m-3 h2 text-white'>Log a Mood</p> */}

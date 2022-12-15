@@ -136,7 +136,7 @@ const Search = (props) => {
         {width>600?
         // desktop
         <>
-        <div className='container-fluid row justify-content-center' onClick={()=>setPickingTrack(false)}>
+        <div className='container-fluid row justify-content-center'>
             <div className='col-10 row justify-content-center'>
                 {!trackSelected?
                     <form 
@@ -174,7 +174,10 @@ const Search = (props) => {
             </div>
             {pickingTrack&&
             <div className='row justify-content-center'>
-                <div style={{position:'fixed', top:'8vh', minHeight:'75vh', width: '75%', zIndex:1, background: 'rgba(0,0,0,0.95)'}} className=' rounded-4 col-12 row justify-content-center p-1' >
+                <div style={{position:'fixed', top:'8vh', minHeight:'75vh', width: '75%', zIndex:1, background: 'rgba(0,0,0,0.95)'}} className=' rounded-4 col-12 row justify-content-center p-1' >\
+                <div className='row p-2 justify-content-end position-absolute'>
+                    <p className='col-1 row justify-content-center text-white h1' style={{cursor:'pointer'}} onClick={()=>setPickingTrack(false)}>x</p>
+                </div>
                     {searchResults.length>0?
                     <>
                     {searchResults.map((info, index)=>(
@@ -206,7 +209,7 @@ const Search = (props) => {
         :
         // mobile
         <>
-        <div className='container-fluid m-0 p-0 row align-items-center justify-content-center' onClick={()=>setPickingTrack(false)}>
+        <div className='container-fluid m-0 p-0 row align-items-center justify-content-center'>
             <div className='col-12 row justify-content-center'>
                 {!trackSelected?
                     <form 
@@ -245,6 +248,9 @@ const Search = (props) => {
             {pickingTrack&&
             <div className='row justify-content-center'>
                 <div style={{position:'fixed', top:'6vh', height:'84vh', width: '90%', zIndex:1, background: 'rgba(0,0,0,0.95)'}} className=' rounded-4 col-12 row justify-content-center p-1' >
+                <div className='row p-2 pt-0 justify-content-end position-absolute'>
+                    <p className='col-1 row justify-content-center text-white h1' style={{cursor:'pointer'}} onClick={()=>setPickingTrack(false)}>x</p>
+                </div>
                     {searchResults.length>0?
                     <>
                     {searchResults.map((info, index)=>(

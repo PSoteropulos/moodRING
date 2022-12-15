@@ -91,7 +91,7 @@ const MoodForm = (props) => {
       ) : (
         <div
           className="container-fluid no-gutters m-0 p-0"
-          onClick={() => setPickingTrack(false)}
+          // onClick={() => setPickingTrack(false)}
         >
           <NavBar />
           <div className="col-12 row justify-content-center align-items-center m-0 p-1">
