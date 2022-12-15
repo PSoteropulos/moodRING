@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
+import { UserContext } from "../contexts/UserContext";
 import axios from 'axios'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
@@ -11,6 +12,7 @@ const Search = (props) => {
     const [trackSelected, setTrackSelected] = useState(false)
     const {pickingTrack, setPickingTrack} = props
     // const [pickingTrack, setPickingTrack] = useState(false)
+    const { loggedUser, setLoggedUser, width } = useContext(UserContext);
 
     const clientID = process.env.REACT_APP_CLIENT_ID
     const clientSecret = process.env.REACT_APP_CLIENT_SECRET
@@ -101,6 +103,10 @@ const Search = (props) => {
     }
 
     return (
+        <>
+        {width>600?
+        // desktop
+        <>
         <div className='container-fluid row justify-content-center' onClick={()=>setPickingTrack(false)}>
             <div className='col-10 row justify-content-center'>
                 {!trackSelected?
@@ -166,9 +172,83 @@ const Search = (props) => {
                 </div>
             </div>
             }
-
-
         </div>
+        </>
+        :
+        // mobile
+        <>
+        <div className='container-fluid m-0 p-0 row align-items-center justify-content-center' onClick={()=>setPickingTrack(false)}>
+            <div className='col-12 row justify-content-center'>
+                {!trackSelected?
+                    <form 
+                    // style={{background: 'rgba(100,100,100,0.1)'}} 
+                    className="row col p-3 rounded-4 justify-content-center" onSubmit={search}>
+                        <div className='col-6 p-2 row justify-content-center'>
+                            <div className='col p-2'>
+                                <p className='text-white h3 p-2'>What's your song?</p>
+                            </div>
+                            <div className="w-100"></div>
+                            <div className='col p-2'>
+                                <label className='form-label text-white h5 p-2'>Track Name</label>
+                                <input type="text" name="trackSearch" className='form-control' onChange={(e)=>handleChange(e)} value={formData.trackSearch}/>
+                            </div>
+                            <div className="w-100"></div>
+                            <div className='col p-2'>
+                                <label className='form-label text-white h5 p-2'>Artist (Optional)</label>
+                                <input type="text" name="artistSearch" className='form-control' onChange={(e)=>handleChange(e)} value={formData.artistSearch}/>
+                            </div>
+                        </div>
+                        <div className='pt-4 col-12'>
+                            <button type='submit' className='btn btn-lg btn-danger'>Search</button>
+                        </div>
+                    </form>
+                    :
+                    <div className="row p-4 col rounded-4 justify-content-center" onSubmit={search}>
+                            <div className='col p-3 row justify-content-center align-items-center'>
+                                <iframe className='col-10' style={{borderRadius:14}} src={`https://open.spotify.com/embed/track/${formData.trackURI.replace('spotify:track:', '')}?utm_source=generator`} width="100%" height='232' frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                            </div>
+                        <div className='pt-5 col-12'>
+                            <p className='text-info h4' onClick={()=>handleTrackChange()}>Click here to change your song.</p>
+                        </div>
+                    </div>
+                }
+            </div>
+            {pickingTrack&&
+            <div className='row justify-content-center'>
+                <div style={{position:'fixed', top:'8vh', minHeight:'75vh', width: '85%', zIndex:1, background: 'rgba(0,0,0,0.95)'}} className=' rounded-4 col-12 row justify-content-center p-1' >
+                    {searchResults.length>0?
+                    <>
+                    {searchResults.map((info, index)=>(
+                        <div style={{background: 'rgba(200,200,200,0.2'}} className='col-12  text-white row rounded-4 justify-content-center align-items-center p-1 m-2' key={index}>
+                            <div className='col-12 p-1 row justify-content-center align-items-center'>
+                                <p className='text-white h6'>
+                                    {info.name} by {info.artists[0].name}
+                                </p>
+                            </div>
+                            <div className='col-12 p-1 row justify-content-center align-items-center'>
+                                <iframe className='col-12' style={{borderRadius:14}} src={`https://open.spotify.com/embed/track/${info.uri.replace('spotify:track:', '')}?utm_source=generator`} width="100%" height='80' frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                            </div>
+                            <div className='col row align-items-center p-3 justify-content-center'>
+                                <div className='col'>
+                                    <button className='btn btn-danger' onClick={()=>handleTrackSelect(info.uri)}>Select this track</button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                    </>
+                    :
+                    <div className='row align-items-center justify-content-center'>
+                        <p className='col-6 text-danger h2'>No tracks found. Please refine your search.</p>
+                    </div>
+                    }
+                </div>
+            </div>
+            }
+        </div>
+        </>
+
+        }
+        </>
     )
 }
 

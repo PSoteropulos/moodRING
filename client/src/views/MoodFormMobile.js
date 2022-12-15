@@ -29,7 +29,7 @@ const MoodForm = (props) => {
 
   // const [loggedUser, setLoggedUser] = useState("");
   const { loggedUser, setLoggedUser, width } = useContext(UserContext);
-//   const username = loggedUser.username;
+  // const username = loggedUser.username;
 
   // const backGroundBoxStyle = {background: '#b5b5b5', filter:`grayscale(100%)sepia(50%)hue-rotate(${mood.hueRotateValue}deg)brightness(${mood.brightnessValue/2+50}%)saturate(${mood.saturateValue/5}%)`}
 
@@ -94,12 +94,11 @@ const MoodForm = (props) => {
           onClick={() => setPickingTrack(false)}
         >
           <NavBar />
-          {/* <p className='m-3 h2 text-white'>Log a Mood</p> */}
-          <div className="col-12 row justify-content-center align-items-center p-4">
-            <p className="h2 text-white pb-2">Add a new mood</p>
+          <div className="col-12 row justify-content-center align-items-center m-0 p-1">
+            <p className="h2 text-white">Add a new mood</p>
             <div
               style={{ background: "rgba(100,100,100,0.1)" }}
-              className="col-10 row justify-content-center p-3 rounded-4"
+              className="col-11 row justify-content-center m-1 rounded-4"
             >
               <div className="row col-12 mt-3 justify-content-center">
                 <div

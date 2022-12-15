@@ -28,7 +28,7 @@ const EditMood = (props) => {
   const [notFoundError, setNotFoundError] = useState("");
   // const [loggedUser, setLoggedUser] = useState("")
   const { loggedUser, setLoggedUser, width } = useContext(UserContext);
-//   const username = loggedUser.username;
+  // const username = loggedUser.username;
 
   // const backGroundBoxStyle = {background: '#b5b5b5', filter:`grayscale(100%)sepia(50%)hue-rotate(${mood.hueRotateValue}deg)brightness(${mood.brightnessValue/2+50}%)saturate(${mood.saturateValue/5}%)`}
 
