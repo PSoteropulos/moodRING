@@ -46,11 +46,11 @@ const Login = (props) => {
                 <form className='col-12 m-0 p-0 row justify-content-center align-items-center' onSubmit={submitHandle}>
                     <div className='p-1 col-12'>
                         <label className='form-label text-white h5'>Email:</label>
-                        <input type="text" name="email" autoComplete='email' onChange={(e)=>handleChange(e)} value={formData.email} className='form-control'/>
+                        <input type="email" name="email" autoComplete='email' onChange={(e)=>handleChange(e)} value={formData.email} className='form-control'/>
                     </div>
                     <div className='p-1 col-12'>
                         <label className='form-label text-white h5'>Password:</label>
-                        <input type='password' name="password" onChange={(e)=>handleChange(e)} value={formData.password} className='form-control'/>
+                        <input type='password' name="password" autoComplete='password' onChange={(e)=>handleChange(e)} value={formData.password} className='form-control'/>
                     {/* {errors && <span className='text-warning'>{errors}</span>}<br/> */}
                     </div>
                     <div className='p-4 m-0 col-12'>

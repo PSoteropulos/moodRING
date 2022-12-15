@@ -50,12 +50,12 @@ const Register = (props) => {
                     </div>
                     <div className='p-1 col-12'>
                         <label className='form-label text-white h5'>Email:</label>
-                        <input type="text" name="email" autoComplete='email' onChange={(e)=>handleChange(e)} value={formData.email} className='form-control'/>
+                        <input type="email" name="email" autoComplete='email' onChange={(e)=>handleChange(e)} value={formData.email} className='form-control'/>
                         {errors.email && <span className='text-danger h6'>{errors.email.message}</span>}<br/>
                     </div>
                     <div className='p-1 col-12'>
                         <label className='form-label text-white h5'>Password:</label>
-                        <input type='password' name="password" onChange={(e)=>handleChange(e)} value={formData.password} className='form-control'/>
+                        <input type='password' name="password"  onChange={(e)=>handleChange(e)} value={formData.password} className='form-control'/>
                         {errors.password && <span className='text-danger h6'>{errors.password.message}</span>}<br/>
                     </div>
                     <div className='p-1 col-12'>
