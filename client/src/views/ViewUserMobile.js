@@ -77,60 +77,65 @@ const ViewUser = (props) => {
               </p>
             </div>
           ) : (
-            <div className="col row align-items-center justify-content-center p-3">
+            <div className="col row align-items-center justify-content-center p-1">
               {loggedUser.username == username ? (
-                <p className="h2 text-white">Your moods</p>
+                <p className="h3 text-white">Your moods</p>
               ) : (
                 <>
-                  <p className="h5 text-white">All moods posted by</p>
-                  <p className="h2 text-white">{username}</p>
+                  <p className="h6 text-white">All moods posted by</p>
+                  <p className="h3 text-white">{username}</p>
                 </>
               )}
               {list.map((mood, index) => (
                 // <div key={index} className="col-10 row m-3 rounded-4 bg-secondary align-items-center justify-content-center">
                 <div
                   key={index}
-                  style={{ background: "rgba(100,100,100,0.1)" }}
-                  className="col-10 m-3 rounded-4 align-items-center justify-content-center backdrop-blur-md"
+                  style={{ background: "rgba(100,100,100,0.1)",
+                  minHeight: "20vh" }}
+                  className="col-11 row m-2 rounded-4 align-items-center justify-content-center backdrop-blur-md"
                 >
-                  <div className="row justify-content-around align-items-center p-4">
-                    <div className="col-4">
+                  <div className="row justify-content-around align-items-center p-0">
+                    <div className="col-12 p-1">
                       <iframe
                         style={{ borderRadius: 14 }}
                         src={`https://open.spotify.com/embed/track/${mood.trackURI}?utm_source=generator`}
                         width="100%"
-                        height="152"
+                        height="80"
                         frameBorder="0"
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                         loading="lazy"
                       ></iframe>
                     </div>
-                    <div className="col-4 text-white">
-                      <div className="h2 pb-1">
+                    <div className="col-12 text-white">
+                      <div className="h3 p-0">
                         <p>{mood.moodDescription}</p>
                       </div>
-                      <div className="">
+                      <div className="col-12 row justify-content-center align-items-center m-0">
                         {
                           mood.postedBy == loggedUser.username ? (
+                          <div className="col-5 row justify-content-center align-items-center m-0">
                             <Link
-                              className="h5"
+                              className="h6 row justify-content-center align-items-center m-0"
                               style={{ textDecoration: "none" }}
                               to={`/view/${mood.postedBy}`}
                             >
                               You
                             </Link>
+                            </div>
                           ) : (
+                            <div className="col-5 row justify-content-center align-items-center m-0">
                             <Link
-                              className="h5"
+                              className="h6 row justify-content-center align-items-center m-0"
                               style={{ textDecoration: "none" }}
                               to={`/view/${mood.postedBy}`}
                             >
                               {mood.postedBy}
                             </Link>
+                            </div>
                           )
                           // <p className='h5'>{mood.postedBy}</p>
                         }
-                        <p className="">
+                        <p className="col-7 row justify-content-center align-items-center m-0">
                           {format(
                             dateConvert(mood.createdAt),
                             "MMM d yyyy h:mmaaa"
@@ -138,7 +143,7 @@ const ViewUser = (props) => {
                         </p>
                       </div>
                       {loggedUser.username == mood.postedBy ? (
-                        <div className="h6 pt-1">
+                        <div className="">
                           <button
                             style={{ background: "rgba(100,100,100,0.3)" }}
                             className="btn btn-sm m-1"
@@ -164,10 +169,8 @@ const ViewUser = (props) => {
                         </div>
                       ) : null}
                     </div>
-                    <div className="col-4 d-flex  justify-content-start">
-                      <div className="col-11">
-                        <Orb size={"120%"} formData={mood} />
-                      </div>
+                    <div className="col-10 p-1 row align-items-center justify-content-center">
+                        <Orb size={"100%"} formData={mood} />
                     </div>
                   </div>
                 </div>

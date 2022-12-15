@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
+import { UserContext } from "../contexts/UserContext";
 import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
 // import crystalBall from '../assets/anotherball.png' //no-has background
@@ -17,7 +18,9 @@ import crystalBall from '../assets/swirlyball.png' //top contender
 const Orb = (props) => {
 
     const {formData, setFormData, size} = props
-    
+
+    const { loggedUser, setLoggedUser, width } = useContext(UserContext);
+
     const hueRotateVal = formData.hueRotateValue
     const brightnessVal = formData.brightnessValue
     const saturateVal = formData.saturateValue
@@ -58,6 +61,9 @@ const Orb = (props) => {
 
     return (
         <>
+        {width>600?
+        <>
+        {/* desktop */}
             <div className='col-12 d-flex justify-content-center align-items-center'>
                 {/* <p id='value'>Hue rotation (0 to 359 degrees) <br/>{hueRotateVal}deg</p>
                 <input name='hue' step={0.5} type="range" min={0} max={359} onChange={(e)=>hueValueChange(e)} value={hueRotateVal} ></input>
@@ -84,6 +90,33 @@ const Orb = (props) => {
                     <div className="col" style={boxStyle}>awdawdawdawd</div>
                 </div> */}
             </div>
+        </>
+        :
+        <>
+        {/* mobile */}
+            <div className='col-12 row m-0 justify-content-center align-items-center'>
+                {setFormData && 
+                <div className='row col-12 justify-content-center'>
+                    <div className='col row justify-content-center align-items-center p-1' id='sliders'>
+                        <p className='form-label text-white pt-1 h6' name='hueRotateValLabel'>Hue/Color</p>
+                        <input className='p-1' style={{width:200}} name='hueRotateValue' step={0.25} type="range" min={0} max={359} onChange={(e)=>handleChange(e)} value={hueRotateVal} ></input>
+                        <p className='form-label text-white pt-1 h6' name='saturateValLabel'>Saturation</p>
+                        <input className='p-1' style={{width:200}} name='saturateValue' step={1} type="range" min={10} max={500} onChange={(e)=>handleChange(e)} value={saturateVal} ></input>
+                        <p className='form-label text-white pt-1 h6' name='brightnessValLabel'>Brightness</p>
+                        <input className='p-1' style={{width:200}} name='brightnessValue' step={1} type="range" min={50} max={100} onChange={(e)=>handleChange(e)} value={brightnessVal} ></input>
+                    </div>
+                </div>
+                }
+                <div className='col-12' id="image">
+                    <div className="tile"><img style={orbStyle} src={crystalBall} alt="" /> </div>
+                </div>
+                {/* <div>
+                    <div className="col" style={boxStyle}>awdawdawdawd</div>
+                </div> */}
+            </div>
+        </>
+
+        }
         </>
     )
 }

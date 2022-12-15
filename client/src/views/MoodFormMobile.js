@@ -100,10 +100,10 @@ const MoodForm = (props) => {
               style={{ background: "rgba(100,100,100,0.1)" }}
               className="col-11 row justify-content-center m-1 rounded-4"
             >
-              <div className="row col-12 mt-3 justify-content-center">
+              <div className="row col-12 m-2 justify-content-center">
                 <div
                   style={{ background: "rgba(100,100,100,0.1)" }}
-                  className="row col-10 rounded-4 justify-content-center"
+                  className="row col-12 rounded-4 justify-content-center"
                 >
                   <Search
                     formData={formData}
@@ -113,22 +113,22 @@ const MoodForm = (props) => {
                   />
                 </div>
                 {errors.trackURI && (
-                  <p className=" col-8 text-danger h5">
+                  <p className=" col-12 text-danger h5">
                     {errors.trackURI.message}
                   </p>
                 )}
               </div>
 
               <form onSubmit={handleSubmit}>
-                <div className="col row m-1 justify-content-center align-items-center">
+                <div className="col row m-0 justify-content-center align-items-center mb-5">
                   <div
                     style={{ background: "rgba(100,100,100,0.1)" }}
-                    className="col-10 row align-items-center justify-content-center p-4 mt-4 rounded-4"
+                    className="col-12 row align-items-center justify-content-center p-1 rounded-4"
                   >
                     <label className="form-label text-white h4 p-1">
                       How does this track make you feel?
                     </label>
-                    <div className="col-6 p-2">
+                    <div className="col-11 p-2">
                       <input
                         type="text"
                         name="moodDescription"
@@ -149,32 +149,32 @@ const MoodForm = (props) => {
 
                   <div
                     style={{ background: "rgba(100,100,100,0.1)" }}
-                    className="col-10 row rounded-4 justify-content-center align-items-center p-4 mt-4"
+                    className="col-12 row rounded-4 justify-content-center align-items-center p-1 mt-2"
                   >
                     <div className="col-12 justify-content-center">
                       <label className="form-label text-white h4">
                         What color do you associate with this emotion or track?
                       </label>
-                      {errors.hueRotateValue && (
-                        <span className="text-danger h4">
+                      {/* {errors.hueRotateValue && (
+                        <span className="text-danger h6">
                           {errors.hueRotateValue.message}
                         </span>
                       )}
                       <br />
                       {errors.brightnessValue && (
-                        <span className="text-danger h4">
+                        <span className="text-danger h6">
                           {errors.brightnessValue.message}
                         </span>
                       )}
                       <br />
                       {errors.saturateValue && (
-                        <span className="text-danger h4">
+                        <span className="text-danger h6">
                           {errors.saturateValue.message}
                         </span>
-                      )}
+                      )} */}
                       <br />
                       <Orb
-                        size={"75%"}
+                        size={"100%"}
                         formData={formData}
                         setFormData={setFormData}
                       />
