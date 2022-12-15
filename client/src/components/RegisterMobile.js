@@ -12,6 +12,16 @@ const Register = (props) => {
     const [formData, setFormData] = useState({username:"", email:"", password:"", confirmPassword:""})
     const [errors, setErrors] = useState({})
 
+    const [eye, setEye] = useState(false)
+    const Eye = () => {
+        setEye(!eye)
+    }
+
+    const [confEye, setConfEye] = useState(false)
+    const ConfEye = () => {
+        setConfEye(!confEye)
+    }
+
     const handleChange= (e) => {
         let key=e.target.name;
         let value=e.target.value;
@@ -55,12 +65,28 @@ const Register = (props) => {
                     </div>
                     <div className='p-1 col-12'>
                         <label className='form-label text-white h5'>Password:</label>
-                        <input type='password' name="password"  onChange={(e)=>handleChange(e)} value={formData.password} className='form-control'/>
+                        <div className='col-12'>
+                            <div className='row m-0 justify-content-end align-items-center col-12'>
+                                <input type={eye?"text":'password'} name="password" onChange={(e)=>handleChange(e)} value={formData.password} className='form-control'  />
+                                <div className='position-absolute col-1' style={{right:60}}>
+                                    <i onClick={Eye} className={`fa ${eye ? "fa-eye-slash" : "fa-eye" }`} style={{cursor:'pointer', fontSize:'25px', }}></i>
+                                </div>
+                            </div>
+                        </div>
+                        {/* <input type='password' name="password"  onChange={(e)=>handleChange(e)} value={formData.password} className='form-control'/> */}
                         {errors.password && <span className='text-danger h6'>{errors.password.message}</span>}<br/>
                     </div>
                     <div className='p-1 col-12'>
                         <label className='form-label text-white h5'>Confirm Password:</label>
-                        <input type="password" name="confirmPassword" onChange={(e)=>handleChange(e)} value={formData.confirmPassword} className='form-control'/>
+                        <div className='col-12'>
+                            <div className='row m-0 justify-content-end align-items-center col-12'>
+                                <input type={confEye?"text":'password'} name="confirmPassword" onChange={(e)=>handleChange(e)} value={formData.confirmPassword} className='form-control'  />
+                                <div className='position-absolute col-1' style={{right:60}}>
+                                    <i onClick={ConfEye} className={`fa ${confEye ? "fa-eye-slash" : "fa-eye" }`} style={{cursor:'pointer', fontSize:'25px', }}></i>
+                                </div>
+                            </div>
+                        </div>
+                        {/* <input type="password" name="confirmPassword" onChange={(e)=>handleChange(e)} value={formData.confirmPassword} className='form-control'/> */}
                         {errors.confirmPassword && <span className='text-danger h6'>{errors.confirmPassword.message}</span>}<br/>
                     </div>
                     <div className='p-4 m-0 col-12'>

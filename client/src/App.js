@@ -25,7 +25,10 @@ function App() {
   const [width, setWidth] = useState(window.innerWidth)
 
   useEffect(() => {
-    window.addEventListener("resize", () => setWidth(window.innerWidth));
+    let windowResize = () => {
+      setWidth(window.innerWidth)
+    };
+    window.addEventListener("resize", windowResize);
     axios
       .get("http://localhost:8000/api/getLoggedUser", { withCredentials: true })
       .then(
@@ -38,6 +41,7 @@ function App() {
         )
       )
       .catch((err) => console.log(err));
+    return () => window.removeEventListener('resize', windowResize)
   }, []);
 
   return (

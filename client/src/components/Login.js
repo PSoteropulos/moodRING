@@ -12,6 +12,11 @@ const Login = (props) => {
     const [formData, setFormData] = useState({email:"", password:""})
     const [errors, setErrors] = useState("")
 
+    const [eye, setEye] = useState(false)
+    const Eye = () => {
+        setEye(!eye)
+    }
+
     const handleChange= (e) => {
         let key=e.target.name;
         let value=e.target.value;
@@ -40,7 +45,7 @@ const Login = (props) => {
 
     return (
         // <div className={styles.animatedGradient}>
-        <div>
+        <div className='col-12 row justify-content-center align-items-center m-0 p-0'>
             {/* <p className='text-white col pt-5 ' style={{fontFamily:'fantasy', fontSize:56}}>moodRING</p> */}
                 {errors && <span className='text-danger h4'>{errors}</span>}<br/>
                 <form className='col-12 row justify-content-center align-items-center p-3 pt-5' onSubmit={submitHandle}>
@@ -50,7 +55,14 @@ const Login = (props) => {
                     </div>
                     <div className='p-4 col-10'>
                         <label className='form-label text-white h5'>Password:</label>
-                        <input type='password' name="password" onChange={(e)=>handleChange(e)} value={formData.password} className='form-control'/>
+                        <div className='col-12'>
+                            <div className='row m-0 justify-content-end align-items-center col-12'>
+                                <input type={eye?"text":'password'} name="password" autoComplete='password' onChange={(e)=>handleChange(e)} value={formData.password} className='form-control'  />
+                                <div className='position-absolute col-1' style={{right:125}}>
+                                    <i onClick={Eye} className={`fa ${eye ? "fa-eye-slash" : "fa-eye" }`} style={{cursor:'pointer', fontSize:'25px', }}></i>
+                                </div>
+                            </div>
+                        </div>
                     {/* {errors && <span className='text-warning'>{errors}</span>}<br/> */}
                     </div>
                     <div className='p-4 m-2 col-10'>
