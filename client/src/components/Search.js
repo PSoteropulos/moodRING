@@ -80,7 +80,7 @@ const Search = (props) => {
             .catch(err => console.log(err))
         }
         else{
-        let searchByTrackArtist = await fetch('https://api.spotify.com/v1/search?q=track:' +  formData.trackSearch + '%20artist:' + formData.artistSearch + '&type=track&market=US&limit=6', searchParam)
+        let searchByTrackArtist = await fetch('https://api.spotify.com/v1/search?q=track:' +  formData.trackSearch + '%20artist:' + formData.artistSearch + '&type=track&market=US&limit=3', searchParam)
             .then(response => response.json())
             // .then(data => console.log(data.tracks.items))
             .then(data => setSearchResults(data.tracks.items))
