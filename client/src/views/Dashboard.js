@@ -68,8 +68,6 @@ const Dashboard = (props) => {
       });
   };
 
-//   const [width, setWidth] = useState(window.innerWidth)
-
   return (
     <>
       {loggedUser ? (

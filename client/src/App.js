@@ -69,8 +69,6 @@ function App() {
             {/* <Route path="/onemood/:id" element={<OneMood />} /> */}
             <Route path="/edit/:id" element={<EditMoodMobile />} />
             <Route path="/view/:username" element={<ViewUserMobile />} />
-            {/* <Route path='/login' element={<Login/>} /> */}
-            {/* <Route path='/register' element={<Register/>} /> */}
             <Route path="*" element={<NotFound />} />
             </>
 }
