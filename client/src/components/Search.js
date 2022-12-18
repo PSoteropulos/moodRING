@@ -89,11 +89,13 @@ const Search = (props) => {
         setPickingTrack(true)
     }
 
+
     const handleChange= (e) => {
         let key=e.target.name;
         let value=e.target.value;
         setFormData({...formData, [key]:value})
     }
+
 
     const handleTrackSelect = (uri) => {
         setFormData({...formData, trackURI:uri})
@@ -101,34 +103,11 @@ const Search = (props) => {
         setTrackSelected(true)
     }
 
+
     const handleTrackChange = () => {
         setPickingTrack(true)
         setTrackSelected(false)
         setFormData({...formData, trackURI:''})
-    }
-
-    const handleSubmit = (e) => {
-        
-        e.preventDefault()
-
-        // let modifiedTrackURI = formData.trackURI.replace('spotify:track:', '')
-        // console.log(modifiedTrackURI)
-        
-        // axios.post('http://localhost:8000/api/addMood' ,{
-        //     trackURI: modifiedTrackURI,
-        //     moodDescription: formData.moodDescription,
-        //     hueRotateValue: formData.hueRotateValue,
-        //     brightnessValue: formData.brightnessValue,
-        //     saturateValue: formData.saturateValue,
-        //     postedBy: loggedUser.username
-
-        // },{withCredentials:true})
-        // .then((res)=>{
-        //     console.log(res)
-        //     navigate('/dashboard')
-        // }).catch((err)=>{
-        //     console.log(err)
-        //     setErrors(err.response.data.errors)})
     }
 
     return (
