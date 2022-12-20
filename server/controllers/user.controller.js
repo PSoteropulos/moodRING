@@ -26,6 +26,7 @@ module.exports = {
 
     loginUser: async (req,res) => {
         if(req.body.email){
+            // console.log(req.body)
             const user = await User.findOne({email:req.body.email}).exec()
             console.log(user)
             try{

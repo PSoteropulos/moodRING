@@ -33,9 +33,6 @@ const Login = (props) => {
         )
         .then((res)=>{
             // console.log("here is userID", {id:res.data.user._id})
-            // setUserID(res.data.user._id)
-            // Session.set('userID', res.data.user._id)
-            // console.log("Session data:", Session.items())
             navigate('/dashboard')
         }).catch((error)=>{
             console.log('login error, clientside',error)
