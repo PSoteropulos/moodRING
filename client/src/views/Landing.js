@@ -73,5 +73,8 @@ const Landing = () => {
 
 // things to do:
 // make navbar button flyout (add anonymous/not on dashboard, add toggle for animated bg or static, +standard stuff)
+// add instructions
+// add chart for moods on form
+// add anonymous posting
 
 export default Landing;
