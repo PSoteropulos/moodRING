@@ -70,7 +70,7 @@ const Dashboard = (props) => {
 
   return (
     <>
-      {loggedUser ? (
+      {loggedUser ? 
         <>
           <div className="container-fluid no-gutters m-0 p-0">
             {/* // <div className={styles.animatedGradient}> */}
@@ -169,9 +169,112 @@ const Dashboard = (props) => {
             <Footer />
           </div>
         </>
-      ) : (
-        <>{list ? <NotFound /> : <div>Loading</div>}</>
-      )}
+      :
+      <>
+        <div className="container-fluid no-gutters m-0 p-0">
+          {/* // <div className={styles.animatedGradient}> */}
+          <NavBar />
+          {/* <p className='text-white h2 m-3'>Moods</p> */}
+          {/* <div className='d-flex flex-wrap'> */}
+          <div className="col row align-items-center justify-content-center p-3">
+            <p className="h2 text-white">The Feed</p>
+            {list.map((mood, index) => (
+              // <div key={index} className="col-10 row m-3 rounded-4 bg-secondary align-items-center justify-content-center">
+              <div
+                key={index}
+                style={{
+                  background: "rgba(100,100,100,0.1)",
+                  minHeight: "30vh",
+                }}
+                className="col-10 row m-3 rounded-4 align-items-center justify-content-center backdrop-blur-md"
+              >
+                <div className="row justify-content-around align-items-center p-4">
+                  <div className="col-4">
+                    <iframe
+                      style={{ borderRadius: 14 }}
+                      src={`https://open.spotify.com/embed/track/${mood.trackURI}?utm_source=generator`}
+                      width="100%"
+                      height="152"
+                      frameBorder="0"
+                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                      loading="lazy"
+                    ></iframe>
+                  </div>
+                  <div className="col-4 text-white">
+                    <div className="h2 pb-1">
+                      <p>{mood.moodDescription}</p>
+                    </div>
+
+                    {/* <div className="">
+                      {mood.postedBy == loggedUser.username ? (
+                        <Link
+                          className="h5"
+                          style={{ textDecoration: "none" }}
+                          to={`/view/${mood.postedBy}`}
+                        >
+                          You
+                        </Link>
+                      ) : (
+                        <Link
+                          className="h5"
+                          style={{ textDecoration: "none" }}
+                          to={`/view/${mood.postedBy}`}
+                        >
+                          {mood.postedBy}
+                        </Link>
+                      )}
+
+                      <p className="">
+                        {format(
+                          dateConvert(mood.createdAt),
+                          "MMM d yyyy h:mmaaa"
+                        )}
+                      </p>
+                    </div> */}
+
+                    {/* {loggedUser.username == mood.postedBy ? (
+                      <div className="h6 pt-1">
+                        <button
+                          style={{ background: "rgba(100,100,100,0.3)" }}
+                          className="btn btn-sm m-1"
+                        >
+                          <Link
+                            style={{ textDecoration: "none", color: "white" }}
+                            to={`/edit/${mood._id}`}
+                          >
+                            Edit Mood
+                          </Link>
+                        </button>
+                        <button
+                          onClick={(e) => deleteHandle(mood._id)}
+                          style={{
+                            textDecoration: "none",
+                            color: "white",
+                            background: "rgba(100,100,100,0.3)",
+                          }}
+                          className="btn btn-sm m-1"
+                        >
+                          Delete Mood
+                        </button>
+                      </div>
+                    ) : null} */}
+
+                  </div>
+                  
+                  <div className="col-4 d-flex  justify-content-start">
+                    <div className="col-11">
+                      <Orb size={"120%"} formData={mood} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <Footer />
+        </div>
+      </>
+        // <>{list ? <NotFound /> : <div>Loading</div>}</>
+      }
     </>
   );
 };

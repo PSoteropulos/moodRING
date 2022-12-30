@@ -47,11 +47,13 @@ const Landing = () => {
                 </div>
                 <div className="col-12 row justify-content-center align-items-center p-2">
                 <div className="col-6 row justify-content-center align-items-center">
-                    <img
-                    className="col-12 rounded-4"
-                    src={screenshot}
-                    alt="content_screenshot"
-                    />
+                    <a href="/dashboard">
+                        <img
+                        className="col-12 rounded-4"
+                        src={screenshot}
+                        alt="content_screenshot"
+                        />
+                    </a>
                 </div>
                 <div className="col-6 row justify-content-center align-items-center rounded-4">
                     {logReg ? (

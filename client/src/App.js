@@ -13,12 +13,12 @@ import MoodFormMobile from "./views/MoodFormMobile";
 import DashboardMobile from "./views/DashboardMobile";
 import ViewUserMobile from "./views/ViewUserMobile";
 import EditMoodMobile from "./views/EditMoodMobile";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Search from "./components/Search";
 import NotFound from "./components/NotFound";
-import NotFoundLogged from "./components/NotFoundLogged";
 import { UserContext } from "./contexts/UserContext";
+// import Login from "./components/Login";
+// import Register from "./components/Register";
+// import Search from "./components/Search";
+// import NotFoundLogged from "./components/NotFoundLogged";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState("");

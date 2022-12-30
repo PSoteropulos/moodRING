@@ -69,7 +69,7 @@ const Login = (props) => {
                         <button className='btn btn-danger btn-lg' type='submit'>Login</button>
                     </div>
                 </form>
-            <p onClick={()=> setLogReg(false)} className='text-white h5'>Not yet registered? Click to register.</p>
+            <p onClick={()=> setLogReg(false)} className='text-white h5'>Not yet registered? Click here to register.</p>
             {/* <Link style={{textDecoration:'none', fontSize:22}} to={'/register'}>Not yet registered? Register here.</Link> */}
             {/* <Footer/> */}
         </div>

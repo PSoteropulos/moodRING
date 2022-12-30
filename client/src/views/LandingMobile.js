@@ -19,11 +19,13 @@ const Landing = () => {
                 </p>
             </div>
             <div className="col-12 m-2 justify-content-center align-items-center">
-                <img
-                className="col-12 rounded-4"
-                src={screenshot}
-                alt="content_screenshot"
-                />
+                <a href="/dashboard">
+                    <img
+                    className="col-12 rounded-4"
+                    src={screenshot}
+                    alt="content_screenshot"
+                    />
+                </a>
             </div>
             <div className="row col-11 justify-content-center align-items-center m-0 p-0">
                 <div className="text-white p-0 col-12 rounded-4 p-1" style={{ background: "rgba(100,100,100,0.2)" }}>

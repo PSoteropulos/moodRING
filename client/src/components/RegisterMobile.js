@@ -93,7 +93,7 @@ const Register = (props) => {
                         <button className='btn btn-danger btn-lg' type='submit'>Register</button>
                     </div>
                 </form>
-                <p onClick={()=>setLogReg(true)} className='text-white h5'>Already registered? Click to log in.</p>
+                <p onClick={()=>setLogReg(true)} className='text-white h5'>Already registered? Click here to log in.</p>
                 {/* <Link style={{textDecoration:'none', fontSize:22}} to={'/login'}>Already registered? Click here to log in</Link> */}
                 {/* <Footer/> */}
         </div>
