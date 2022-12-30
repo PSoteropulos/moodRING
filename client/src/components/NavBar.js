@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const NavBar = (props) => {
-  // const {username} = props
+    
   const { loggedUser, setLoggedUser, width } = useContext(UserContext);
   const username = loggedUser.username;
 
@@ -37,9 +37,6 @@ const NavBar = (props) => {
     axios
       .get("http://localhost:8000/api/logout", { withCredentials: true })
       .then((res) => {
-        // Session.clear()
-        // console.log("Session data:", Session.items())
-        // res.clearCookie('userToken')
         console.log("Logged out on front end");
         setLoggedUser("");
         navigate("/");
@@ -146,7 +143,6 @@ const NavBar = (props) => {
                 style={{ background: "rgba(100,100,100, 0.15)", minHeight: "15vh" }}
                 >
                 <div className="col-4 row justify-content-center align-items-center">
-                    {/* <p className='h4 text-white' style={{fontFamily:'fantasy'}}>Welcome to</p> */}
                     <p
                     className="text-white m-0 p-0 row justify-content-start"
                     style={{ fontFamily: "fantasy", fontSize: 58 }}
@@ -169,22 +165,6 @@ const NavBar = (props) => {
                     >
                         The Feed
                     </NavLink>
-
-                    {/* <NavLink
-                        to={`/view/${username}`}
-                        className="h5 row justify-content-end"
-                        style={({ isActive }) => (isActive ? activeStyle : inActiveStyle)}
-                    >
-                        Your Moods
-                    </NavLink> */}
-
-                    {/* <NavLink
-                        to="/form"
-                        className="h5 row justify-content-end"
-                        style={({ isActive }) => (isActive ? activeStyle : inActiveStyle)}
-                    >
-                        New mood
-                    </NavLink> */}
 
                     <NavLink
                         to="/"
@@ -211,14 +191,6 @@ const NavBar = (props) => {
                         <NavLink to="/dashboard" className="h6 col" style={({ isActive }) => (isActive ? activeStyle : inActiveStyle)}>
                             The Feed
                         </NavLink>
-
-                        {/* <NavLink to={`/view/${username}`} className="h6 col" style={({ isActive }) => (isActive ? activeStyle : inActiveStyle)}>
-                            Your Moods
-                        </NavLink> */}
-
-                        {/* <NavLink to="/form" className="h6 col" style={({ isActive }) => (isActive ? activeStyle : inActiveStyle)}>
-                            New mood
-                        </NavLink> */}
 
                         <NavLink to="/" className="h6 col" style={inActiveStyle} onClick={logout}>
                             Login or Register
