@@ -79,4 +79,6 @@ const Landing = () => {
 // add chart for moods on form
 // add anonymous posting
 
+// 12/31 changed routing to allow not logged user to see limited feed
+
 export default Landing;
