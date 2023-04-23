@@ -16,21 +16,25 @@ const NavBar = (props) => {
   let inActiveStyle = {
     color: "white",
   };
+  
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/getLoggedUser", { withCredentials: true })
-      .then(
-        (res) => (
-        //   console.log(res),
-          setLoggedUser({
-            id: res.data.user._id,
-            username: res.data.user.username,
-          })
-        )
-      )
-      .catch((err) => console.log(err));
-  }, []);
+
+// logged user is provided via context
+
+//   useEffect(() => {
+//     axios
+//       .get("http://localhost:8000/api/getLoggedUser", { withCredentials: true })
+//       .then(
+//         (res) => (
+//         //   console.log(res),
+//           setLoggedUser({
+//             id: res.data.user._id,
+//             username: res.data.user.username,
+//           })
+//         )
+//       )
+//       .catch((err) => console.log(err));
+//   }, []);
 
 
   const logout = (e) => {

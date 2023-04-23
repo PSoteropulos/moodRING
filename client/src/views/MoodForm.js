@@ -46,7 +46,7 @@ const MoodForm = (props) => {
         )
       )
       .catch((err) => console.log(err));
-  }, []);
+  }, [ ]);
 
   const handleChange = (e) => {
     let key = e.target.name;
